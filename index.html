@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pl">
+ 	<head>
+    	<meta charset="utf-8" />
+    	<title>Paint</title>
+    	
+    	<link rel="stylesheet" href="style.css" type="text/css"/>
+ 	</head>
+
+	<body onload="main();">
+	    <canvas id="canvas1"></canvas>
+	    <canvas id="canvas2"></canvas>
+	    <canvas id="canvas3"></canvas>
+	    <!--<form name="form">
+	    	<input id="mode" type="text" placeholder="Mode">
+	    	<input id="button" type="button" value="Submit!" onClick = "change();">
+	    </form>-->
+	    <div id="dashboard">
+	    	<div class = "option" id="option1" onClick="change(1);">PENCIL</div>
+    		<div class = "option" id="option2" onClick="change(2);">FILLRECT</div>
+    		<div class = "option" id="option3" onClick="change(3);">RECT</div>
+    		<div class = "option" id="option4" onClick="change(4);">ERASER</div>
+    		<div class = "option" id="option5" onClick="change(5);">TEXT</div>
+    		<div class = "option" id="option6" onClick="change(6);">LINE</div>
+    		<div class = "option" id="option7" onClick="change(7);">TRIANGLE</div>
+    		<div class = "option" id="option8" onClick="change(8);">CIRCLE</div>	
+	    </div>
+
+	    <div id="palette">
+	    	<div class = "color" id = "color1"  onClick="changeColor('lime');"></div>
+	    	<div class = "color" id = "color2"  onClick="changeColor('green');"></div>
+	    	<div class = "color" id = "color3"  onClick="changeColor('red');"></div>
+	    	<div class = "color" id = "color4"  onClick="changeColor('orange');"></div>
+	    	<div class = "color" id = "color5"  onClick="changeColor('yellow');"></div>
+	    	<div class = "color" id = "color6"  onClick="changeColor('brown');"></div>
+	    	<div class = "color" id = "color7"  onClick="changeColor('blue');"></div>
+	    	<div class = "color" id = "color8"  onClick="changeColor('fuchsia');"></div>
+	    	<div class = "color" id = "color9"  onClick="changeColor('navy');"></div>
+	    	<div class = "color" id = "color10" onClick="changeColor('purple');"></div>
+	    	<div class = "color" id = "color11" onClick="changeColor('teal');"></div>
+	    	<div class = "color" id = "color12" onClick="changeColor('aqua');"></div>
+	    	<div class = "color" id = "color13" onClick="changeColor('gold');"></div>
+	    	<div class = "color" id = "color14" onClick="changeColor('silver');"></div>
+	    	<div class = "color" id = "color15" onClick="changeColor('gray');"></div>
+	    	<div class = "color" id = "color16" onClick="changeColor('black');"></div>
+	    </div>
+	    
+
+		<div id="size">
+		    <form name="form">
+		    	<input id="width" type="text" placeholder="Size">
+		    	<input id="submit" type="button" value="Submit">
+		    	<input id="clear"  type="button" value="Clear">
+		    	<input id="download"  type="button" value="Download">
+		    </form>
+	    </div>
+	    <div id="proba" style="clear:both;"></div>
+
+	    <div id="generatedImageList"></div>
+	    
+	</body>
+	<script src="script.js"></script>
+</html>

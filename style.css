@@ -1,0 +1,165 @@
+*{
+	box-sizing: border-box;
+	margin:0;
+}
+
+canvas{
+	border:solid 1px black;
+}
+
+#canvas1{
+	float:left;
+}
+
+#canvas2{
+	position:absolute;
+	left:0;
+	top:0;
+	z-index: -1;
+}
+
+#canvas3{
+	position:absolute;
+	left:0;
+	top:0;
+	z-index: -2;
+}
+
+#dashboard{
+	width:100px;
+	float:left;
+	margin-left:10px;
+	margin-top:8px;
+}
+
+.option{
+	padding:10px;
+	background-color: #4444FF;
+	border:solid 2px #4444FF;
+	border-radius:5px;
+	width:100px;
+	text-align:center;
+	margin-top:2px;
+	color:white;
+}
+
+.option:hover{
+	cursor:pointer;
+}
+
+#palette{
+	width:76px;
+	float:left;
+	margin-left:10px;
+}
+
+.color{
+	width:30px;
+	height:30px;
+	background-color: red;
+	margin:10px 6px 0 0;
+	display:inline-block;
+	border: 1px solid #333333;
+}
+
+.color:hover{
+	cursor:pointer;
+}
+
+#color1{
+	background-color: lime;
+}
+
+#color2{
+	background-color: green;
+}
+
+#color3{
+	background-color: red;
+}
+
+#color4{
+	background-color: orange;
+
+}
+
+#color5{
+	background-color: yellow;
+}
+
+#color6{
+	background-color: brown;
+}
+
+#color7{
+	background-color: blue;
+}
+
+#color8{
+	background-color: fuchsia;
+}
+
+#color9{
+	background-color: navy;
+}
+
+#color10{
+	background-color: purple;
+}
+
+#color11{
+	background-color: teal;
+}
+
+#color12{
+	background-color: aqua;
+}
+
+#color13{
+	background-color: gold;
+}
+
+#color14{
+	background-color: silver;
+}
+
+#color15{
+	background-color: grey;
+}
+
+#color16{
+	background-color: black;
+	border-width:4px;
+}
+
+input{
+	width:130px;
+	font-size:20px;
+	text-align: center;
+	border-radius:3px;
+	border:solid 1px #4444FF;
+}
+
+#size{
+	float:left;
+	width:130px;
+	margin-top:10px;
+	margin-left:5px;
+}
+
+#submit, #clear, #download{
+	margin-top:5px;
+	background-color: #4444FF;
+	border:solid 2px #4444FF;
+	border-radius:5px;
+	font-size:20px;
+	color:white;
+	padding:5px 0 5px 0;
+}
+
+#submit:hover, #clear:hover, #download:hover{
+	background-color: white;
+	color:#4444FF;
+	cursor:pointer;
+}
+

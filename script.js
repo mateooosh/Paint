@@ -44,6 +44,7 @@ function resetColor(){
 }
 
 function changeColor(value){
+	paint.changeStyle(value);
 	resetColor();
 	switch(value){
 		case 'lime':
@@ -110,7 +111,6 @@ function changeColor(value){
 			document.getElementById("color16").style.borderWidth='4px';
 			break;
 	}
-	paint.changeStyle(value);
 }
 
 paint.changeStyle = function (value){
@@ -134,8 +134,15 @@ paint.changeLineJoin = function (value) {
 
 function changeSize(){
 	let value=document.getElementById("width").value;
-	if(value<1)
+	if(value<1){
+		alert("Podana wartość jest mniejsza od 0, Size = 1");
 		value=1;
+	}
+
+	if(isNaN(value)){
+		alert("Wprowadzona wartość nie jest liczbą!");
+		return;
+	}
 	paint.changeLineWidth(value);
 }
 
@@ -159,19 +166,12 @@ paint.changeMode = function (value) {
 
 
 function setActive(v){
-	for(let i=1; i<9; i++)
-		active[i-1] = false;
-	active[v-1] = true;
-}
-
-function reset(value){
-	let msg='option';
 	for(let i=1; i<9; i++){
-		msg='option';
-		msg+=i;
-		document.getElementById(msg).style.backgroundColor='#4444FF';
-		document.getElementById(msg).style.color='white';
+		active[i-1] = false;
+		document.getElementById('option'+i).setAttribute('class', 'option inactive');
 	}
+	active[v-1] = true;
+	document.getElementById('option'+v).setAttribute('class', 'option active');
 }
 
 function main(){
@@ -196,10 +196,6 @@ function main(){
 
 	switch(paint.mode){
 		case 1: //PENCIL
-			reset();
-			document.getElementById('option1').style.backgroundColor='white';
-			document.getElementById('option1').style.color='#4444FF';
-
 			setActive(1);
 
 			function start1(e){
@@ -207,14 +203,14 @@ function main(){
 				if(active[0]==false) return;
 				ctx1.beginPath();
 				ctx1.strokeStyle=paint.strokeStyle;
-				ctx1.moveTo(e.clientX, e.clientY);
-				ctx1.lineTo(e.clientX, e.clientY);
+				ctx1.moveTo(e.pageX, e.pageY);
+				ctx1.lineTo(e.pageX, e.pageY);
 				ctx1.stroke();
 			}
 
 			function draw1(e){
 				if((painting == false)||(active[0] == false)) return;
-				ctx1.lineTo(e.clientX, e.clientY);
+				ctx1.lineTo(e.pageX, e.pageY);
 				ctx1.stroke();
 			}
 
@@ -230,16 +226,13 @@ function main(){
 			break;
 
 		case 2: //FILLRECT
-			reset();
-			document.getElementById('option2').style.backgroundColor='white';
-			document.getElementById('option2').style.color='#4444FF';
 			setActive(2);
 
 			function start2(e){
 				painting = true;
 				if(active[1] == false) return;
-				startX = e.clientX;
-				startY = e.clientY;
+				startX = e.pageX;
+				startY = e.pageY;
 				ctx1.fillRect(startX, startY, 0, 1);
 				ctx3.drawImage(canvas1,0,0);
 				ctx1.clearRect(0,0,canvas2.width, canvas2.height);
@@ -249,7 +242,7 @@ function main(){
 			function draw2(e){
 				if((painting == false)||(active[1]==false)) return;
 				ctx2.clearRect(0,0,canvas2.width, canvas2.height);
-				ctx2.fillRect(startX, startY, e.clientX-startX, e.clientY-startY);
+				ctx2.fillRect(startX, startY, e.pageX-startX, e.pageY-startY);
 			}
 
 			function finish2(e){
@@ -267,19 +260,16 @@ function main(){
 			break;
 
 		case 3: //RECT
-			reset();
-			document.getElementById('option3').style.backgroundColor='white';
-			document.getElementById('option3').style.color='#4444FF';
 			setActive(3);
 
 			function start3(e){
 				painting = true;
 				if(active[2] == false) return;
-				startX = e.clientX;
-				startY = e.clientY;
+				startX = e.pageX;
+				startY = e.pageY;
 				ctx2.beginPath();
-				ctx2.moveTo(e.clientX, e.clientY);
-				ctx2.lineTo(e.clientX, e.clientY);
+				ctx2.moveTo(e.pageX, e.pageY);
+				ctx2.lineTo(e.pageX, e.pageY);
 				ctx2.stroke();
 				ctx3.drawImage(canvas1,0,0);
 				ctx1.clearRect(0,0,canvas2.width, canvas2.height);
@@ -291,9 +281,9 @@ function main(){
 
 				ctx2.beginPath();
 				ctx2.moveTo(startX, startY);
-				ctx2.lineTo(startX, e.clientY);
-				ctx2.lineTo(e.clientX, e.clientY);
-				ctx2.lineTo(e.clientX, startY);
+				ctx2.lineTo(startX, e.pageY);
+				ctx2.lineTo(e.pageX, e.pageY);
+				ctx2.lineTo(e.pageX, startY);
 				ctx2.lineTo(startX, startY);
 				ctx2.stroke();
 			}
@@ -313,9 +303,6 @@ function main(){
 			break;
 		
 		case 4: //ERASER
-			reset();
-			document.getElementById('option4').style.backgroundColor='white';
-			document.getElementById('option4').style.color='#4444FF';
 			setActive(4);
 			
 			function start4(e){
@@ -323,14 +310,14 @@ function main(){
 				if(active[3]==false) return;
 				ctx1.strokeStyle = 'white';
 				ctx1.beginPath();
-				ctx1.moveTo(e.clientX, e.clientY);
-				ctx1.lineTo(e.clientX, e.clientY);
+				ctx1.moveTo(e.pageX, e.pageY);
+				ctx1.lineTo(e.pageX, e.pageY);
 				ctx1.stroke();
 			}
 
 			function draw4(e){
 				if((painting == false)||(active[3] == false)) return;
-				ctx1.lineTo(e.clientX, e.clientY);
+				ctx1.lineTo(e.pageX, e.pageY);
 				ctx1.stroke();
 			}
 
@@ -345,28 +332,22 @@ function main(){
 			break;
 
 		case 5:
-			document.getElementById('option5').style.backgroundColor='white';
-			document.getElementById('option5').style.color='#4444FF';
-			reset();
 			setActive(5);
-
+			
 			break;
 
 		case 6: // LINE
-			reset();
-			document.getElementById('option6').style.backgroundColor='white';
-			document.getElementById('option6').style.color='#4444FF';
 			setActive(6);
 
 			function start6(e){
 				painting = true;
 				if(active[5]==false) return;
-				startX = e.clientX;
-				startY = e.clientY;
+				startX = e.pageX;
+				startY = e.pageY;
 
 				ctx1.beginPath();
-				ctx1.moveTo(e.clientX, e.clientY);
-				ctx1.lineTo(e.clientX, e.clientY);
+				ctx1.moveTo(e.pageX, e.pageY);
+				ctx1.lineTo(e.pageX, e.pageY);
 				ctx1.stroke();
 
 				ctx3.drawImage(canvas1,0,0);
@@ -379,7 +360,7 @@ function main(){
 				ctx2.clearRect(0,0,canvas2.width, canvas2.height);
 				ctx2.beginPath();
 				ctx2.moveTo(startX, startY);
-				ctx2.lineTo(e.clientX, e.clientY);
+				ctx2.lineTo(e.pageX, e.pageY);
 				ctx2.stroke();
 			}
 
@@ -399,16 +380,13 @@ function main(){
 			break;
 
 		case 7: // TRIANGLE
-			reset();
-			document.getElementById('option7').style.backgroundColor='white';
-			document.getElementById('option7').style.color='#4444FF';
 			setActive(7);
 
 			function start7(e){
 				painting = true;
 				if(active[6]==false) return;
-				startX = e.clientX;
-				startY = e.clientY;
+				startX = e.pageX;
+				startY = e.pageY;
 
 				ctx3.drawImage(canvas1,0,0);
 				ctx1.clearRect(0,0,canvas2.width, canvas2.height);
@@ -419,10 +397,10 @@ function main(){
 				ctx2.clearRect(0,0,canvas2.width, canvas2.height);
 
 				ctx2.beginPath();
-				ctx2.moveTo(startX, e.clientY);
-				ctx2.lineTo((e.clientX+startX)/2, startY);
-				ctx2.lineTo(e.clientX, e.clientY);
-				ctx2.lineTo(startX, e.clientY);
+				ctx2.moveTo(startX, e.pageY);
+				ctx2.lineTo((e.pageX+startX)/2, startY);
+				ctx2.lineTo(e.pageX, e.pageY);
+				ctx2.lineTo(startX, e.pageY);
 				ctx2.stroke();
 			}
 
@@ -442,16 +420,13 @@ function main(){
 			break;
 
 		case 8: //CIRCLE
-			reset();
-			document.getElementById('option8').style.backgroundColor='white';
-			document.getElementById('option8').style.color='#4444FF';
 			setActive(8);
 
 			function start8(e){
 				painting = true;
 				if(active[7]==false) return;
-				startX = e.clientX;
-				startY = e.clientY;
+				startX = e.pageX;
+				startY = e.pageY;
 
 				ctx3.drawImage(canvas1,0,0);
 				ctx1.clearRect(0,0,canvas2.width, canvas2.height);
@@ -461,8 +436,8 @@ function main(){
 				if((painting == false)||(active[7] == false)) return;
 				ctx2.clearRect(0,0,canvas2.width, canvas2.height);
 				ctx2.beginPath();
-				ctx2.arc((e.clientX-startX)/2+startX,(e.clientY-startY)/2+startY,
-					Math.abs(((e.clientX-startX)/2+(e.clientY-startY)/2)/2), 0,10*Math.PI);
+				ctx2.arc((e.pageX-startX)/2+startX,(e.pageY-startY)/2+startY,
+					Math.abs(((e.pageX-startX)/2+(e.pageY-startY)/2)/2), 0,10*Math.PI);
 				ctx2.stroke();
 			}
 
@@ -499,7 +474,7 @@ let temp3 = document.getElementById("download");
 temp3.addEventListener('click', getImage);
 
 
-function getImage(){
+function getImage(){ //DOWNLOAD
 	var imgData = canvas1.toDataURL('image/png'),
 		//list = document.getElementById("generatedImageList"),
 		a = document.createElement("a"),

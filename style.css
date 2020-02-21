@@ -34,23 +34,24 @@ canvas{
 
 .option{
 	padding:10px;
-	background-color: #4444FF;
-	border:solid 2px #4444FF;
 	border-radius:5px;
 	width:100px;
 	text-align:center;
 	margin-top:2px;
-	color:white;
+	border:solid 2px #4444FF;
 }
 
 .option:hover{
 	cursor:pointer;
+	background-color: white;
+	color:#4444FF;
 }
 
 #palette{
 	width:76px;
 	float:left;
 	margin-left:10px;
+
 }
 
 .color{
@@ -64,6 +65,21 @@ canvas{
 
 .color:hover{
 	cursor:pointer;
+}
+
+.inactive{
+	background-color: #4444FF;
+	color:white;
+}
+
+.inactive:hover{
+	background-color: white;
+	color:#4444FF;
+}
+
+.active{
+	background-color: white;
+	color:#4444FF;
 }
 
 #color1{

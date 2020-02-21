@@ -16,14 +16,14 @@
 	    	<input id="button" type="button" value="Submit!" onClick = "change();">
 	    </form>-->
 	    <div id="dashboard">
-	    	<div class = "option" id="option1" onClick="change(1);">PENCIL</div>
-    		<div class = "option" id="option2" onClick="change(2);">FILLRECT</div>
-    		<div class = "option" id="option3" onClick="change(3);">RECT</div>
-    		<div class = "option" id="option4" onClick="change(4);">ERASER</div>
-    		<div class = "option" id="option5" onClick="change(5);">TEXT</div>
-    		<div class = "option" id="option6" onClick="change(6);">LINE</div>
-    		<div class = "option" id="option7" onClick="change(7);">TRIANGLE</div>
-    		<div class = "option" id="option8" onClick="change(8);">CIRCLE</div>	
+	    	<div class = "option active" id="option1" onClick="change(1);">PENCIL</div>
+    		<div class = "option inactive" id="option2" onClick="change(2);">FILLRECT</div>
+    		<div class = "option inactive" id="option3" onClick="change(3);">RECT</div>
+    		<div class = "option inactive" id="option4" onClick="change(4);">ERASER</div>
+    		<div class = "option inactive" id="option5" onClick="change(5);">TEXT</div>
+    		<div class = "option inactive" id="option6" onClick="change(6);">LINE</div>
+    		<div class = "option inactive" id="option7" onClick="change(7);">TRIANGLE</div>
+    		<div class = "option inactive" id="option8" onClick="change(8);">CIRCLE</div>	
 	    </div>
 
 	    <div id="palette">
@@ -57,7 +57,8 @@
 	    <div id="proba" style="clear:both;"></div>
 
 	    <div id="generatedImageList"></div>
-	    
+
+	    <script src="script.js"></script>
+
 	</body>
-	<script src="script.js"></script>
 </html>

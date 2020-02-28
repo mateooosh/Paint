@@ -3,27 +3,24 @@
  	<head>
     	<meta charset="utf-8" />
     	<title>Paint</title>
-    	
+
+    	<!--FAVICON-->
+    	<link href="data:image/x-icon;base64,AAABAAEAEBAAAAAAAABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAABwAAAAoAAAAKAAAACgAAAAoAAAAKAAAACgAAAAoAAAAKAAAACgAAAAoAAAAGAAAAAf///wD///8AAAAAByI+a34gOWKDAAAAKQAAACkAAAApAAAAKcGeg//TspP/zamJ/7eMcP9lPS9nAAAAGQAAAAP///8A////AP///wCWqccsLmqg/S5Tjzz///8A////AKRpWBX+3Lr/zZyBx6RnUg/NmXvH+tCm/7yCZdL///8A////AP///wD///8A////AC5Tj+ZXZprz////AP///wD///8A+tm7/6RpVg////8ApGdSD/7Wrv/90qn/tHhduv///wD///8A////AP///wD///8AppSt+zJUkLf///8ApGxcFfzewP/Nn4fHpGlWD82cgcf+2LL//tau//fLo/+kZE0V////AP///wD///8A////AC5Tj0vVhYb/gXF+w/DTu//+48j//uHD//7ev//uxaH/zIZS/9WVZP/+1q7/yJFz7f///wD///8A////AMCYjdvr1sn/f4iu/9KZnv/q2cr//uXM//7jyP/+4cP/+di7/96XY//WkF3//tiy/+a4lf////8A////ALyWjo3/+/j//Pn1/6m40/9luu3/OmKp///o0f/+5cz//uPI//7hw//nqHn/2Ztq//7atv/uw6H/////AP///wDdycTn//36/w5IxP8JPrv/a4Sv/0it//+Kmrf//+3b//7lzf/+48j//uHD//7ev//+3Lr/6cCf/////wD///8A59jV/f/+/P8sX9L/Qm7M///7+P9Pf7X/MXrT//nx6//Y5M3/ar9//1atbf/t4cz//uXN/920mP////8A////ANW/u9b//v7/xc7h/+fo7v/9+/n/Tcbh/1+g0/84YZj//PTq/3XJiv+n1an/tM2r//zn0P+3gm69////AP///wDXw8BV///+///+/v///v3/4PHz/0fe/P88qdL/TLD//7nBz//+8+n/+e/f//rr2v/x1sL/////AP///wD///8A////ALSOiLj+/fz///7+///+/P+i7fv/X931/1Jxov82dML///Xr///y5v/03s//pG1eM////wD///8A////AP///wD///8ApXlzEsKhnNjw5eL/+/bz//77+P/99/L/TYnB/15znf+9koTS////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AJapxw01crbk////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAN4fAADeRwAAzuMAAOZDAADwAQAAwAEAAIABAACAAQAAgAEAAIABAADAAwAAwAcAAPAPAAD/3wAA//8AAA==" rel="icon" type="image/x-icon" />
     	<link rel="stylesheet" href="style.css" type="text/css"/>
  	</head>
 
-	<body onload="main();">
+	<body>
 	    <canvas id="canvas1"></canvas>
 	    <canvas id="canvas2"></canvas>
 	    <canvas id="canvas3"></canvas>
-	    <!--<form name="form">
-	    	<input id="mode" type="text" placeholder="Mode">
-	    	<input id="button" type="button" value="Submit!" onClick = "change();">
-	    </form>-->
 	    <div id="dashboard">
-	    	<div class = "option active" id="option1" onClick="change(1);">PENCIL</div>
+	    	<div class = "option active"   id="option1" onClick="change(1);">PENCIL</div>
     		<div class = "option inactive" id="option2" onClick="change(2);">FILLRECT</div>
     		<div class = "option inactive" id="option3" onClick="change(3);">RECT</div>
     		<div class = "option inactive" id="option4" onClick="change(4);">ERASER</div>
-    		<div class = "option inactive" id="option5" onClick="change(5);">TEXT</div>
-    		<div class = "option inactive" id="option6" onClick="change(6);">LINE</div>
-    		<div class = "option inactive" id="option7" onClick="change(7);">TRIANGLE</div>
-    		<div class = "option inactive" id="option8" onClick="change(8);">CIRCLE</div>	
+    		<div class = "option inactive" id="option5" onClick="change(5);">LINE</div>
+    		<div class = "option inactive" id="option6" onClick="change(6);">TRIANGLE</div>
+    		<div class = "option inactive" id="option7" onClick="change(7);">CIRCLE</div>	
 	    </div>
 
 	    <div id="palette">
@@ -48,16 +45,16 @@
 
 		<div id="size">
 		    <form name="form">
-		    	<input id="width" type="text" placeholder="Size">
-		    	<input id="submit" type="button" value="Submit">
-		    	<input id="clear"  type="button" value="Clear">
+		    	<input id="width"     type="text" placeholder="Size">
+		    	<input id="submit"    type="button" value="Submit">
+		    	<input id="clear"     type="button" value="Clear">
 		    	<input id="download"  type="button" value="Download">
 		    </form>
 	    </div>
-	    <div id="proba" style="clear:both;"></div>
+	    
+	    <div id="proba" style="clear:both;">Size: 5</div>
 
-	    <div id="generatedImageList"></div>
-
+		<script src="functions.js"></script>
 	    <script src="script.js"></script>
 
 	</body>

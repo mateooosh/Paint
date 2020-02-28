@@ -15,7 +15,7 @@ canvas3.width = window.innerWidth*2/3;
 
 let painting = false;
 let startX, startY;
-let active=[false,false,false,false,false,false,false,false];
+let active=[false,false,false,false,false,false,false];
 
 let paint = {
 mode: 		1,
@@ -23,10 +23,9 @@ mode: 		1,
 //2 - FILLRECT 
 //3 - RECT
 //4 - ERASER
-//5 - TEXT
-//6 - LINE
-//7 - TRIANGLE
-//8 - CIRCLE
+//5 - LINE
+//6 - TRIANGLE
+//7 - CIRCLE
 
 fillStyle:   'black',
 
@@ -116,19 +115,19 @@ function changeColor(value){
 paint.changeStyle = function (value){
 	this.fillStyle = value;
 	this.strokeStyle = value;
-	document.getElementById('proba').innerHTML = value;
+	//document.getElementById('proba').innerHTML = value;
 	main();
 }
 
 
-paint.changeLineCap = function (value) {
+/*paint.changeLineCap = function (value) {
 	this.lineCap = value;
 }
 
 
 paint.changeLineJoin = function (value) {
 	this.lineJoin = value;
-}
+}*/
 
 
 
@@ -148,7 +147,7 @@ function changeSize(){
 
 paint.changeLineWidth = function (value) {
 	this.lineWidth = value;
-	document.getElementById('proba').innerHTML = this.lineWidth;
+	document.getElementById('proba').innerHTML = 'Size: '+this.lineWidth;
 	main();
 }
 
@@ -160,13 +159,13 @@ function change(v){
 
 paint.changeMode = function (value) {
 	this.mode = value;
-	document.getElementById('proba').innerHTML = this.mode;
+	//document.getElementById('proba').innerHTML = this.mode;
 	main();
 }
 
 
 function setActive(v){
-	for(let i=1; i<9; i++){
+	for(let i=1; i<8; i++){
 		active[i-1] = false;
 		document.getElementById('option'+i).setAttribute('class', 'option inactive');
 	}
@@ -198,271 +197,62 @@ function main(){
 		case 1: //PENCIL
 			setActive(1);
 
-			function start1(e){
-				painting = true;
-				if(active[0]==false) return;
-				ctx1.beginPath();
-				ctx1.strokeStyle=paint.strokeStyle;
-				ctx1.moveTo(e.pageX, e.pageY);
-				ctx1.lineTo(e.pageX, e.pageY);
-				ctx1.stroke();
-			}
-
-			function draw1(e){
-				if((painting == false)||(active[0] == false)) return;
-				ctx1.lineTo(e.pageX, e.pageY);
-				ctx1.stroke();
-			}
-
-			function finish1(){
-				painting = false;
-				ctx1.closePath();
-			}
-
-			canvas1.addEventListener('mousedown', start1);
-			canvas1.addEventListener('mouseup', finish1);
-			canvas1.addEventListener('mousemove', draw1);
+			canvas1.addEventListener('mousedown', startPencil);
+			canvas1.addEventListener('mouseup', finishPencil);
+			canvas1.addEventListener('mousemove', drawPencil);
 
 			break;
 
 		case 2: //FILLRECT
 			setActive(2);
 
-			function start2(e){
-				painting = true;
-				if(active[1] == false) return;
-				startX = e.pageX;
-				startY = e.pageY;
-				ctx1.fillRect(startX, startY, 0, 1);
-				ctx3.drawImage(canvas1,0,0);
-				ctx1.clearRect(0,0,canvas2.width, canvas2.height);
-					
-			}
-
-			function draw2(e){
-				if((painting == false)||(active[1]==false)) return;
-				ctx2.clearRect(0,0,canvas2.width, canvas2.height);
-				ctx2.fillRect(startX, startY, e.pageX-startX, e.pageY-startY);
-			}
-
-			function finish2(e){
-				painting = false;
-				ctx1.drawImage(canvas3,0,0);
-				ctx1.drawImage(canvas2,0,0);
-
-				ctx2.clearRect(0,0,canvas2.width, canvas2.height);
-				ctx3.clearRect(0,0,canvas3.width, canvas3.height);
-			}
-
-			canvas1.addEventListener('mousedown', start2);
-			canvas1.addEventListener('mouseup', finish2);
-			canvas1.addEventListener('mousemove', draw2);
+			canvas1.addEventListener('mousedown', startFillrect);
+			canvas1.addEventListener('mouseup', finishFillrect);
+			canvas1.addEventListener('mousemove', drawFillrect);
 			break;
 
 		case 3: //RECT
 			setActive(3);
 
-			function start3(e){
-				painting = true;
-				if(active[2] == false) return;
-				startX = e.pageX;
-				startY = e.pageY;
-				ctx2.beginPath();
-				ctx2.moveTo(e.pageX, e.pageY);
-				ctx2.lineTo(e.pageX, e.pageY);
-				ctx2.stroke();
-				ctx3.drawImage(canvas1,0,0);
-				ctx1.clearRect(0,0,canvas2.width, canvas2.height);
-			}
-
-			function draw3(e){
-				if((painting == false)||(active[2] == false)) return;
-				ctx2.clearRect(0,0,canvas2.width, canvas2.height);
-
-				ctx2.beginPath();
-				ctx2.moveTo(startX, startY);
-				ctx2.lineTo(startX, e.pageY);
-				ctx2.lineTo(e.pageX, e.pageY);
-				ctx2.lineTo(e.pageX, startY);
-				ctx2.lineTo(startX, startY);
-				ctx2.stroke();
-			}
-
-			function finish3(e){
-				painting = false;
-				ctx1.drawImage(canvas3,0,0);
-				ctx1.drawImage(canvas2,0,0);
-
-				ctx2.clearRect(0,0,canvas2.width, canvas2.height);
-				ctx3.clearRect(0,0,canvas3.width, canvas3.height);
-			}
-
-			canvas1.addEventListener('mousedown', start3);
-			canvas1.addEventListener('mouseup', finish3);
-			canvas1.addEventListener('mousemove', draw3);
+			canvas1.addEventListener('mousedown', startRect);
+			canvas1.addEventListener('mouseup', finishRect);
+			canvas1.addEventListener('mousemove', drawRect);
 			break;
 		
 		case 4: //ERASER
 			setActive(4);
 			
-			function start4(e){
-				painting = true;
-				if(active[3]==false) return;
-				ctx1.strokeStyle = 'white';
-				ctx1.beginPath();
-				ctx1.moveTo(e.pageX, e.pageY);
-				ctx1.lineTo(e.pageX, e.pageY);
-				ctx1.stroke();
-			}
-
-			function draw4(e){
-				if((painting == false)||(active[3] == false)) return;
-				ctx1.lineTo(e.pageX, e.pageY);
-				ctx1.stroke();
-			}
-
-			function finish4(){
-				painting = false;
-				ctx1.strokeStyle = paint.strokeStyle;
-			}
-
-			canvas1.addEventListener('mousedown', start4);
-			canvas1.addEventListener('mouseup', finish4);
-			canvas1.addEventListener('mousemove', draw4);
+			canvas1.addEventListener('mousedown', startEraser);
+			canvas1.addEventListener('mouseup', finishEraser);
+			canvas1.addEventListener('mousemove', drawEraser);
 			break;
 
-		case 5:
+		case 5: // LINE
 			setActive(5);
-			
+
+			canvas1.addEventListener('mousedown', startLine);
+			canvas1.addEventListener('mouseup', finishLine);
+			canvas1.addEventListener('mousemove', drawLine);
 			break;
 
-		case 6: // LINE
+		case 6: // TRIANGLE
 			setActive(6);
 
-			function start6(e){
-				painting = true;
-				if(active[5]==false) return;
-				startX = e.pageX;
-				startY = e.pageY;
-
-				ctx1.beginPath();
-				ctx1.moveTo(e.pageX, e.pageY);
-				ctx1.lineTo(e.pageX, e.pageY);
-				ctx1.stroke();
-
-				ctx3.drawImage(canvas1,0,0);
-				ctx1.clearRect(0,0,canvas2.width, canvas2.height);
-
-			}
-
-			function draw6(e){
-				if((painting == false)||(active[5] == false)) return;
-				ctx2.clearRect(0,0,canvas2.width, canvas2.height);
-				ctx2.beginPath();
-				ctx2.moveTo(startX, startY);
-				ctx2.lineTo(e.pageX, e.pageY);
-				ctx2.stroke();
-			}
-
-			function finish6(e){
-				painting = false;
-
-				ctx1.drawImage(canvas3,0,0);
-				ctx1.drawImage(canvas2,0,0);
-
-				ctx1.drawImage(canvas2,0,0);
-				ctx2.clearRect(0,0,canvas2.width, canvas2.height);
-			}
-
-			canvas1.addEventListener('mousedown', start6);
-			canvas1.addEventListener('mouseup', finish6);
-			canvas1.addEventListener('mousemove', draw6);
+			canvas1.addEventListener('mousedown', startTriangle);
+			canvas1.addEventListener('mouseup' , finishTriangle);
+			canvas1.addEventListener('mousemove' , drawTriangle);
 			break;
 
-		case 7: // TRIANGLE
+		case 7: //CIRCLE
 			setActive(7);
 
-			function start7(e){
-				painting = true;
-				if(active[6]==false) return;
-				startX = e.pageX;
-				startY = e.pageY;
-
-				ctx3.drawImage(canvas1,0,0);
-				ctx1.clearRect(0,0,canvas2.width, canvas2.height);
-			}
-
-			function draw7(e){
-				if((painting == false)||(active[6]==false)) return;
-				ctx2.clearRect(0,0,canvas2.width, canvas2.height);
-
-				ctx2.beginPath();
-				ctx2.moveTo(startX, e.pageY);
-				ctx2.lineTo((e.pageX+startX)/2, startY);
-				ctx2.lineTo(e.pageX, e.pageY);
-				ctx2.lineTo(startX, e.pageY);
-				ctx2.stroke();
-			}
-
-			function finish7(e){
-				painting = false;
-				
-				ctx1.drawImage(canvas3,0,0);
-				ctx1.drawImage(canvas2,0,0);
-
-				ctx2.clearRect(0,0,canvas2.width, canvas2.height);
-				ctx3.clearRect(0,0,canvas2.width, canvas2.height);
-			}
-
-			canvas1.addEventListener('mousedown', start7);
-			canvas1.addEventListener('mouseup' , finish7);
-			canvas1.addEventListener('mousemove' , draw7);
-			break;
-
-		case 8: //CIRCLE
-			setActive(8);
-
-			function start8(e){
-				painting = true;
-				if(active[7]==false) return;
-				startX = e.pageX;
-				startY = e.pageY;
-
-				ctx3.drawImage(canvas1,0,0);
-				ctx1.clearRect(0,0,canvas2.width, canvas2.height);
-			}
-
-			function draw8(e){
-				if((painting == false)||(active[7] == false)) return;
-				ctx2.clearRect(0,0,canvas2.width, canvas2.height);
-				ctx2.beginPath();
-				ctx2.arc((e.pageX-startX)/2+startX,(e.pageY-startY)/2+startY,
-					Math.abs(((e.pageX-startX)/2+(e.pageY-startY)/2)/2), 0,10*Math.PI);
-				ctx2.stroke();
-			}
-
-			function finish8(e){
-				painting = false;
-				
-				ctx1.drawImage(canvas3,0,0);
-				ctx1.drawImage(canvas2,0,0);
-
-				ctx2.clearRect(0,0,canvas2.width, canvas2.height);
-				ctx3.clearRect(0,0,canvas3.width, canvas3.height);
-			}
-
-			canvas1.addEventListener('mousedown', start8);
-			canvas1.addEventListener('mouseup', finish8);
-			canvas1.addEventListener('mousemove', draw8);
+			canvas1.addEventListener('mousedown', startCircle);
+			canvas1.addEventListener('mouseup', finishCircle);
+			canvas1.addEventListener('mousemove', drawCircle);
 		break;
 	}
 }
 
-function clear(){
-	ctx1.clearRect(0,0,canvas1.width, canvas1.height);
-	ctx2.clearRect(0,0,canvas2.width, canvas2.height);
-	ctx3.clearRect(0,0,canvas3.width, canvas3.height);
-}
 
 let temp = document.getElementById('submit');
 temp.addEventListener('click', changeSize);
@@ -470,17 +260,28 @@ temp.addEventListener('click', changeSize);
 let temp2 = document.getElementById('clear');
 temp2.addEventListener('click', clear);
 
-let temp3 = document.getElementById("download");
+let temp3 = document.getElementById('download');
 temp3.addEventListener('click', getImage);
+
+let temp4 = window;
+temp4.addEventListener('load', main);
 
 
 function getImage(){ //DOWNLOAD
 	var imgData = canvas1.toDataURL('image/png'),
-		//list = document.getElementById("generatedImageList"),
 		a = document.createElement("a"),
 		img = document.createElement("img");
 	a.href = imgData;
-	a.download = "paint"+new Date().toLocaleTimeString()+".png";
+	a.download = "obrazek"+new Date().toLocaleTimeString()+".png";
 	a.click();
 }
+
+
+function clear(){
+	ctx1.clearRect(0,0,canvas1.width, canvas1.height);
+	ctx2.clearRect(0,0,canvas2.width, canvas2.height);
+	ctx3.clearRect(0,0,canvas3.width, canvas3.height);
+}
+
+
 

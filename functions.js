@@ -2,22 +2,31 @@
 function startPencil(e){
 	painting = true;
 	if(active[0]==false) return;
-	ctx1.beginPath();
-	ctx1.strokeStyle=paint.strokeStyle;
-	ctx1.moveTo(e.pageX, e.pageY);
-	ctx1.lineTo(e.pageX, e.pageY);
-	ctx1.stroke();
+	ctx3.drawImage(canvas1,0,0);
+	ctx1.clearRect(0,0,canvas2.width, canvas2.height);
+	ctx2.beginPath();
+	ctx2.strokeStyle=paint.strokeStyle;
+	ctx2.moveTo(e.pageX, e.pageY);
+	ctx2.lineTo(e.pageX, e.pageY);
+	ctx2.stroke();
 }
 
 function drawPencil(e){
 	if((painting == false)||(active[0] == false)) return;
-	ctx1.lineTo(e.pageX, e.pageY);
-	ctx1.stroke();
+
+	ctx2.lineTo(e.pageX, e.pageY);
+	ctx2.stroke();
 }
 
 function finishPencil(){
 	painting = false;
-	ctx1.closePath();
+	ctx2.closePath();
+	ctx1.drawImage(canvas3,0,0);
+	ctx1.drawImage(canvas2,0,0);
+
+	ctx2.clearRect(0,0,canvas2.width, canvas2.height);
+	ctx3.clearRect(0,0,canvas3.width, canvas3.height);
+
 }
 
 
@@ -93,22 +102,23 @@ function finishRect(e){
 function startEraser(e){
 	painting = true;
 	if(active[3]==false) return;
-	ctx1.strokeStyle = 'white';
-	ctx1.beginPath();
-	ctx1.moveTo(e.pageX, e.pageY);
-	ctx1.lineTo(e.pageX, e.pageY);
-	ctx1.stroke();
+	var lastX, lastY;
+	startX = e.pageX;
+	startY = e.pageY;
+	ctx1.clearRect(startX-paint.lineWidth*3/2, startY-paint.lineWidth*3/2,paint.lineWidth*3,paint.lineWidth*3);
 }
 
 function drawEraser(e){
 	if((painting == false)||(active[3] == false)) return;
-	ctx1.lineTo(e.pageX, e.pageY);
-	ctx1.stroke();
+	lastX=startX, lastY=startY;
+	ctx1.clearRect(e.pageX-paint.lineWidth*3/2, e.pageY-paint.lineWidth*3/2, paint.lineWidth*3, paint.lineWidth*3);
+	ctx1.clearRect((lastX+e.pageX)/2-paint.lineWidth*3/2, (lastY+e.pageY)/2-paint.lineWidth*3/2, paint.lineWidth*3, paint.lineWidth*3);
+	startX = e.pageX;
+	startY = e.pageY;
 }
 
 function finishEraser(){
 	painting = false;
-	ctx1.strokeStyle = paint.strokeStyle;
 }
 
 

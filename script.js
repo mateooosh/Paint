@@ -39,7 +39,7 @@ strokeStyle: 'black',
 
 function resetColor(){
 	for(let i=1; i<17; i++)
-		document.getElementById("color"+i).style.borderWidth='1px';
+		$("#color"+i).css('border-width', '1px');
 }
 
 function changeColor(value){
@@ -47,67 +47,83 @@ function changeColor(value){
 	resetColor();
 	switch(value){
 		case 'lime':
-			document.getElementById("color1").style.borderWidth='4px';
+			//document.getElementById("color1").style.borderWidth='4px';
+			$('#color1').css('border-width','4px');
 			break;
 
 		case 'green':
-			document.getElementById("color2").style.borderWidth='4px';
+			//document.getElementById("color2").style.borderWidth='4px';
+			$('#color2').css('border-width','4px');
 			break;
 
 		case 'red':
-			document.getElementById("color3").style.borderWidth='4px';
+			//document.getElementById("color3").style.borderWidth='4px';
+			$('#color3').css('border-width','4px');
 			break;
 
 		case 'orange':
-			document.getElementById("color4").style.borderWidth='4px';
+			//document.getElementById("color4").style.borderWidth='4px';
+			$('#color4').css('border-width','4px');
 			break;
 
 		case 'yellow':
-			document.getElementById("color5").style.borderWidth='4px';
+			//document.getElementById("color5").style.borderWidth='4px';
+			$('#color5').css('border-width','4px');
 			break;
 
 		case 'brown':
-			document.getElementById("color6").style.borderWidth='4px';
+			//document.getElementById("color6").style.borderWidth='4px';
+			$('#color6').css('border-width','4px');
 			break;
 
 		case 'blue':
-			document.getElementById("color7").style.borderWidth='4px';
+			//document.getElementById("color7").style.borderWidth='4px';
+			$('#color7').css('border-width','4px');
 			break;
 
 		case 'fuchsia':
-			document.getElementById("color8").style.borderWidth='4px';
+			//document.getElementById("color8").style.borderWidth='4px';
+			$('#color8').css('border-width','4px');
 			break;
 
 		case 'navy':
-			document.getElementById("color9").style.borderWidth='4px';
+			//document.getElementById("color9").style.borderWidth='4px';
+			$('#color9').css('border-width','4px');
 			break;
 
 		case 'purple':
-			document.getElementById("color10").style.borderWidth='4px';
+			//document.getElementById("color10").style.borderWidth='4px';
+			$('#color10').css('border-width','4px');
 			break;
 
 		case 'teal':
-			document.getElementById("color11").style.borderWidth='4px';
+			//document.getElementById("color11").style.borderWidth='4px';
+			$('#color11').css('border-width','4px');
 			break;
 
 		case 'aqua':
-			document.getElementById("color12").style.borderWidth='4px';
+			//document.getElementById("color12").style.borderWidth='4px';
+			$('#color12').css('border-width','4px');
 			break;
 
 		case 'gold':
-			document.getElementById("color13").style.borderWidth='4px';
+			//document.getElementById("color13").style.borderWidth='4px';
+			$('#color13').css('border-width','4px');
 			break;
 
 		case 'silver':
-			document.getElementById("color14").style.borderWidth='4px';
+			//document.getElementById("color14").style.borderWidth='4px';
+			$('#color14').css('border-width','4px');
 			break;
 
 		case 'gray':
-			document.getElementById("color15").style.borderWidth='4px';
+			//document.getElementById("color15").style.borderWidth='4px';
+			$('#color15').css('border-width','4px');
 			break;
 
 		case 'black':
-			document.getElementById("color16").style.borderWidth='4px';
+			//document.getElementById("color16").style.borderWidth='4px';
+			$('#color16').css('border-width','4px');
 			break;
 	}
 }
@@ -147,7 +163,8 @@ function changeSize(){
 
 paint.changeLineWidth = function (value) {
 	this.lineWidth = value;
-	document.getElementById('proba').innerHTML = 'Size: '+this.lineWidth;
+	//document.getElementById('proba').innerHTML = 'Size: '+this.lineWidth;
+	$('#proba').html('Size changed to: '+this.lineWidth);
 	main();
 }
 

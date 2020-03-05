@@ -214,64 +214,93 @@ function main(){
 		case 1: //PENCIL
 			setActive(1);
 
-			canvas1.addEventListener('mousedown', startPencil);
-			canvas1.addEventListener('mouseup', finishPencil);
-			canvas1.addEventListener('mousemove', drawPencil);
+			//canvas1.addEventListener('mousedown', startPencil);
+			//canvas1.addEventListener('mouseup', finishPencil);
+			//canvas1.addEventListener('mousemove', drawPencil);
+			$("#canvas1").on("mousedown", startPencil); 
+			$("#canvas1").on("mouseup", finishPencil); 
+			$("#canvas1").on("mousemove", drawPencil); 
 
 			break;
 
 		case 2: //FILLRECT
 			setActive(2);
 
-			canvas1.addEventListener('mousedown', startFillrect);
-			canvas1.addEventListener('mouseup', finishFillrect);
-			canvas1.addEventListener('mousemove', drawFillrect);
+			//canvas1.addEventListener('mousedown', startFillrect);
+			//canvas1.addEventListener('mouseup', finishFillrect);
+			//canvas1.addEventListener('mousemove', drawFillrect);
+
+			$("#canvas1").on("mousedown", startFillrect); 
+			$("#canvas1").on("mouseup", finishFillrect); 
+			$("#canvas1").on("mousemove", drawFillrect);
 			break;
 
 		case 3: //RECT
 			setActive(3);
 
-			canvas1.addEventListener('mousedown', startRect);
-			canvas1.addEventListener('mouseup', finishRect);
-			canvas1.addEventListener('mousemove', drawRect);
+			//canvas1.addEventListener('mousedown', startRect);
+			//canvas1.addEventListener('mouseup', finishRect);
+			//canvas1.addEventListener('mousemove', drawRect);
+
+			$("#canvas1").on("mousedown", startRect); 
+			$("#canvas1").on("mouseup", finishRect); 
+			$("#canvas1").on("mousemove", drawRect);
+
+
 			break;
 		
 		case 4: //ERASER
 			setActive(4);
 			
-			canvas1.addEventListener('mousedown', startEraser);
-			canvas1.addEventListener('mouseup', finishEraser);
-			canvas1.addEventListener('mousemove', drawEraser);
+			//canvas1.addEventListener('mousedown', startEraser);
+			//canvas1.addEventListener('mouseup', finishEraser);
+			//canvas1.addEventListener('mousemove', drawEraser);
+
+			$("#canvas1").on("mousedown", startEraser); 
+			$("#canvas1").on("mouseup", finishEraser); 
+			$("#canvas1").on("mousemove", drawEraser);
 			break;
 
 		case 5: // LINE
 			setActive(5);
 
-			canvas1.addEventListener('mousedown', startLine);
-			canvas1.addEventListener('mouseup', finishLine);
-			canvas1.addEventListener('mousemove', drawLine);
+			//canvas1.addEventListener('mousedown', startLine);
+			//canvas1.addEventListener('mouseup', finishLine);
+			//canvas1.addEventListener('mousemove', drawLine);
+
+			$("#canvas1").on("mousedown", startLine); 
+			$("#canvas1").on("mouseup", finishLine); 
+			$("#canvas1").on("mousemove", drawLine);
 			break;
 
 		case 6: // TRIANGLE
 			setActive(6);
 
-			canvas1.addEventListener('mousedown', startTriangle);
-			canvas1.addEventListener('mouseup' , finishTriangle);
-			canvas1.addEventListener('mousemove' , drawTriangle);
+			//canvas1.addEventListener('mousedown', startTriangle);
+			//canvas1.addEventListener('mouseup' , finishTriangle);
+			//canvas1.addEventListener('mousemove' , drawTriangle);
+
+			$("#canvas1").on("mousedown", startTriangle); 
+			$("#canvas1").on("mouseup", finishTriangle); 
+			$("#canvas1").on("mousemove", drawTriangle);
 			break;
 
 		case 7: //CIRCLE
 			setActive(7);
 
-			canvas1.addEventListener('mousedown', startCircle);
-			canvas1.addEventListener('mouseup', finishCircle);
-			canvas1.addEventListener('mousemove', drawCircle);
+			//canvas1.addEventListener('mousedown', startCircle);
+			//canvas1.addEventListener('mouseup', finishCircle);
+			//canvas1.addEventListener('mousemove', drawCircle);
+
+			$("#canvas1").on("mousedown", startCircle); 
+			$("#canvas1").on("mouseup", finishCircle); 
+			$("#canvas1").on("mousemove", drawCircle);
 		break;
 	}
 }
 
 
-let temp = document.getElementById('submit');
+/*let temp = document.getElementById('submit');
 temp.addEventListener('click', changeSize);
 
 let temp2 = document.getElementById('clear');
@@ -281,7 +310,14 @@ let temp3 = document.getElementById('download');
 temp3.addEventListener('click', getImage);
 
 let temp4 = window;
-temp4.addEventListener('load', main);
+temp4.addEventListener('load', main);*/
+
+$("#submit").on("click", changeSize); 
+$("#clear").on("click", clear); 
+$("#download").on("click", getImage);
+$(window).on("load", main);
+
+
 
 
 function getImage(){ //DOWNLOAD

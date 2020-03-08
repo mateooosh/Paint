@@ -167,6 +167,7 @@ input{
 
 #submit, #clear, #download{
 	margin-top:8px;
+	display:block;
 	background-color: #4444FF;
 	border:solid 2px #4444FF;
 	border-radius:5px;

@@ -1,1 +1,1 @@
-# Paint v1.0
+# Paint v1.1

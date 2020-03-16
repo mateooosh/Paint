@@ -37,12 +37,12 @@ strokeStyle: 'black',
 
 };
 
-function resetColor(){
+const resetColor = () =>{
 	for(let i=1; i<17; i++)
 		$("#color"+i).css('border-width', '1px');
 }
 
-function changeColor(value){
+const changeColor = (value) =>{
 	paint.changeStyle(value);
 	resetColor();
 	switch(value){
@@ -131,24 +131,12 @@ function changeColor(value){
 paint.changeStyle = function (value){
 	this.fillStyle = value;
 	this.strokeStyle = value;
-	//document.getElementById('proba').innerHTML = value;
 	main();
 }
 
 
-/*paint.changeLineCap = function (value) {
-	this.lineCap = value;
-}
-
-
-paint.changeLineJoin = function (value) {
-	this.lineJoin = value;
-}*/
-
-
-
-function changeSize(){
-	let value=document.getElementById("width").value;
+const changeSize = () =>{
+	let value = document.getElementById("width").value;
 	if(value<1){
 		alert("Podana wartość jest mniejsza od 0, Size = 1");
 		value=1;
@@ -170,7 +158,7 @@ paint.changeLineWidth = function (value) {
 
 
 
-function change(v){
+const change = (v) =>{
 	paint.changeMode(v);
 }
 
@@ -181,7 +169,7 @@ paint.changeMode = function (value) {
 }
 
 
-function setActive(v){
+const setActive = (v) =>{
 	for(let i=1; i<8; i++){
 		active[i-1] = false;
 		document.getElementById('option'+i).setAttribute('class', 'option inactive');
@@ -190,7 +178,7 @@ function setActive(v){
 	document.getElementById('option'+v).setAttribute('class', 'option active');
 }
 
-function offListeners(){
+const offListeners = () =>{
 	$("#canvas1").off("mousedown", startPencil); 
 	$("#canvas1").off("mouseup", finishPencil); 
 	$("#canvas1").off("mousemove", drawPencil);
@@ -220,7 +208,7 @@ function offListeners(){
 	$("#canvas1").off("mousemove", drawCircle);
 }
 
-function main(){
+const main = () =>{
 	ctx1.lineCap = paint.lineCap;
 	ctx1.lineJoin = paint.lineJoin;
 	ctx1.lineWidth = paint.lineWidth;
@@ -245,9 +233,6 @@ function main(){
 			setActive(1);
 			offListeners();
 
-			//canvas1.addEventListener('mousedown', startPencil);
-			//canvas1.addEventListener('mouseup', finishPencil);
-			//canvas1.addEventListener('mousemove', drawPencil);
 			$("#canvas1").on("mousedown", startPencil); 
 			$("#canvas1").on("mouseup", finishPencil); 
 			$("#canvas1").on("mousemove", drawPencil); 
@@ -257,10 +242,6 @@ function main(){
 		case 2: //FILLRECT
 			setActive(2);
 			offListeners();
-			
-			//canvas1.addEventListener('mousedown', startFillrect);
-			//canvas1.addEventListener('mouseup', finishFillrect);
-			//canvas1.addEventListener('mousemove', drawFillrect);
 
 			$("#canvas1").on("mousedown", startFillrect); 
 			$("#canvas1").on("mouseup", finishFillrect); 
@@ -270,9 +251,6 @@ function main(){
 		case 3: //RECT
 			setActive(3);
 			offListeners();
-			//canvas1.addEventListener('mousedown', startRect);
-			//canvas1.addEventListener('mouseup', finishRect);
-			//canvas1.addEventListener('mousemove', drawRect);
 
 			$("#canvas1").on("mousedown", startRect); 
 			$("#canvas1").on("mouseup", finishRect); 
@@ -284,9 +262,6 @@ function main(){
 		case 4: //ERASER
 			setActive(4);
 			offListeners();
-			//canvas1.addEventListener('mousedown', startEraser);
-			//canvas1.addEventListener('mouseup', finishEraser);
-			//canvas1.addEventListener('mousemove', drawEraser);
 
 			$("#canvas1").on("mousedown", startEraser); 
 			$("#canvas1").on("mouseup", finishEraser); 
@@ -296,9 +271,6 @@ function main(){
 		case 5: // LINE
 			setActive(5);
 			offListeners();
-			//canvas1.addEventListener('mousedown', startLine);
-			//canvas1.addEventListener('mouseup', finishLine);
-			//canvas1.addEventListener('mousemove', drawLine);
 
 			$("#canvas1").on("mousedown", startLine); 
 			$("#canvas1").on("mouseup", finishLine); 
@@ -308,9 +280,6 @@ function main(){
 		case 6: // TRIANGLE
 			setActive(6);
 			offListeners();
-			//canvas1.addEventListener('mousedown', startTriangle);
-			//canvas1.addEventListener('mouseup' , finishTriangle);
-			//canvas1.addEventListener('mousemove' , drawTriangle);
 
 			$("#canvas1").on("mousedown", startTriangle); 
 			$("#canvas1").on("mouseup", finishTriangle); 
@@ -320,9 +289,6 @@ function main(){
 		case 7: //CIRCLE
 			setActive(7);
 			offListeners();
-			//canvas1.addEventListener('mousedown', startCircle);
-			//canvas1.addEventListener('mouseup', finishCircle);
-			//canvas1.addEventListener('mousemove', drawCircle);
 
 			$("#canvas1").on("mousedown", startCircle); 
 			$("#canvas1").on("mouseup", finishCircle); 
@@ -331,29 +297,14 @@ function main(){
 	}
 }
 
-
-/*let temp = document.getElementById('submit');
-temp.addEventListener('click', changeSize);
-
-let temp2 = document.getElementById('clear');
-temp2.addEventListener('click', clear);
-
-let temp3 = document.getElementById('download');
-temp3.addEventListener('click', getImage);
-
-let temp4 = window;
-temp4.addEventListener('load', main);*/
-
 $("#width").on("keyup", changeSize); 
 $("#clear").on("click", clear); 
 $("#download").on("click", getImage);
 $(window).on("load", main);
 
 
-
-
 function getImage(){ //DOWNLOAD
-	var imgData = canvas1.toDataURL('image/png'),
+	let imgData = canvas1.toDataURL('image/png'),
 		a = document.createElement("a"),
 		img = document.createElement("img");
 	a.href = imgData;

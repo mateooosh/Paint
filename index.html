@@ -14,13 +14,18 @@
 	    <canvas id="canvas2"></canvas>
 	    <canvas id="canvas3"></canvas>
 	    <div id="dashboard">
-	    	<div class = "option active"   id="option1" onClick="change(1);">PENCIL</div>
-    		<div class = "option inactive" id="option2" onClick="change(2);">FILLRECT</div>
-    		<div class = "option inactive" id="option3" onClick="change(3);">RECT</div>
-    		<div class = "option inactive" id="option4" onClick="change(4);">ERASER</div>
-    		<div class = "option inactive" id="option5" onClick="change(5);">LINE</div>
-    		<div class = "option inactive" id="option6" onClick="change(6);">TRIANGLE</div>
-    		<div class = "option inactive" id="option7" onClick="change(7);">CIRCLE</div>	
+	    	<div class = "option active"   id="option1" onClick="change(1);">Pencil</div>
+    		<div class = "option inactive" id="option2" onClick="change(2);">Fillrect</div>
+    		<div class = "option inactive" id="option3" onClick="change(3);">Rect</div>
+    		<div class = "option inactive" id="option4" onClick="change(4);">Eraser</div>
+    		<div class = "option inactive" id="option5" onClick="change(5);">Line</div>
+    		<div class = "option inactive" id="option6" onClick="change(6);">Triangle</div>
+    		<div class = "option inactive" id="option7" onClick="change(7);">Circle</div>
+    		<form name="form">
+		    	<input id="width"   type="text" placeholder="Size">
+		    </form>	
+		    <div id="clear" class="option">Clear</div>
+		    <div  id="download" class="option">Download</div>
 	    </div>
 
 	    <div id="palette">
@@ -41,18 +46,8 @@
 	    	<div class = "color" id = "color15" onClick="changeColor('gray');"></div>
 	    	<div class = "color" id = "color16" onClick="changeColor('black');"></div>
 	    </div>
-	    
 
-		<div id="options">
-		    <form name="form">
-		    	<input id="width"     type="text" placeholder="Size">
-		    	<!--<input id="submit"    type="button" value="Submit">-->
-		    	<input id="clear"     type="button" value="Clear">
-		    	<input id="download"  type="button" value="Download">
-		    </form>
-	    </div>
-
-	    <div id="proba" style="clear:both; font-size:20px; ">Size: 5</div>
+	    <div id="proba" style="font-size:20px; ">Size: 5</div>
 
 		<script src="jquery-3.4.1.min.js"></script>
 		<script src="functions.js"></script>

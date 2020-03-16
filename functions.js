@@ -1,5 +1,6 @@
 //PENCIL
-function startPencil(e){
+
+const startPencil = (e) => {
 	painting = true;
 	if(active[0]==false) return;
 	ctx3.drawImage(canvas1,0,0);
@@ -11,14 +12,14 @@ function startPencil(e){
 	ctx2.stroke();
 }
 
-function drawPencil(e){
+const drawPencil = (e) =>{
 	if((painting == false)||(active[0] == false)) return;
 
 	ctx2.lineTo(e.pageX, e.pageY);
 	ctx2.stroke();
 }
 
-function finishPencil(){
+const finishPencil = (e) =>{
 	painting = false;
 	ctx2.closePath();
 	ctx1.drawImage(canvas3,0,0);
@@ -26,13 +27,12 @@ function finishPencil(){
 
 	ctx2.clearRect(0,0,canvas2.width, canvas2.height);
 	ctx3.clearRect(0,0,canvas3.width, canvas3.height);
-
 }
 
 
 
 //FILLRECT
-function startFillrect(e){
+const startFillrect = (e) =>{
 	painting = true;
 	if(active[1] == false) return;
 	startX = e.pageX;
@@ -43,13 +43,13 @@ function startFillrect(e){
 		
 }
 
-function drawFillrect(e){
+const drawFillrect = (e) =>{
 	if((painting == false)||(active[1]==false)) return;
 	ctx2.clearRect(0,0,canvas2.width, canvas2.height);
 	ctx2.fillRect(startX, startY, e.pageX-startX, e.pageY-startY);
 }
 
-function finishFillrect(e){
+const finishFillrect = () =>{
 	painting = false;
 	ctx1.drawImage(canvas3,0,0);
 	ctx1.drawImage(canvas2,0,0);
@@ -61,7 +61,7 @@ function finishFillrect(e){
 
 
 //RECT
-function startRect(e){
+const startRect = (e) =>{
 	painting = true;
 	if(active[2] == false) return;
 	startX = e.pageX;
@@ -74,7 +74,7 @@ function startRect(e){
 	ctx1.clearRect(0,0,canvas2.width, canvas2.height);
 }
 
-function drawRect(e){
+const drawRect = (e) =>{
 	if((painting == false)||(active[2] == false)) return;
 	ctx2.clearRect(0,0,canvas2.width, canvas2.height);
 
@@ -87,7 +87,7 @@ function drawRect(e){
 	ctx2.stroke();
 }
 
-function finishRect(e){
+const finishRect = () =>{
 	painting = false;
 	ctx1.drawImage(canvas3,0,0);
 	ctx1.drawImage(canvas2,0,0);
@@ -97,9 +97,8 @@ function finishRect(e){
 }
 
 
-
 //ERASER
-function startEraser(e){
+const startEraser = (e) =>{
 	painting = true;
 	if(active[3]==false) return;
 	var lastX, lastY;
@@ -108,7 +107,7 @@ function startEraser(e){
 	ctx1.clearRect(startX-paint.lineWidth*3/2, startY-paint.lineWidth*3/2,paint.lineWidth*3,paint.lineWidth*3);
 }
 
-function drawEraser(e){
+const drawEraser = (e) =>{
 	if((painting == false)||(active[3] == false)) return;
 	lastX=startX, lastY=startY;
 	ctx1.clearRect(e.pageX-paint.lineWidth*3/2, e.pageY-paint.lineWidth*3/2, paint.lineWidth*3, paint.lineWidth*3);
@@ -117,15 +116,13 @@ function drawEraser(e){
 	startY = e.pageY;
 }
 
-function finishEraser(){
+const finishEraser = () =>{
 	painting = false;
 }
 
 
-
-
 //LINE
-function startLine(e){
+const startLine = (e) =>{
 	painting = true;
 	if(active[4]==false) return;
 	startX = e.pageX;
@@ -141,7 +138,7 @@ function startLine(e){
 
 }
 
-function drawLine(e){
+const drawLine = (e) => {
 	if((painting == false)||(active[4] == false)) return;
 	ctx2.clearRect(0,0,canvas2.width, canvas2.height);
 	ctx2.beginPath();
@@ -150,7 +147,7 @@ function drawLine(e){
 	ctx2.stroke();
 }
 
-function finishLine(e){
+const finishLine = () => {
 	painting = false;
 
 	ctx1.drawImage(canvas3,0,0);
@@ -161,10 +158,8 @@ function finishLine(e){
 }
 
 
-
-
 //TRIANGLE
-function startTriangle(e){
+const startTriangle = (e) =>{
 	painting = true;
 	if(active[5]==false) return;
 	startX = e.pageX;
@@ -174,7 +169,7 @@ function startTriangle(e){
 	ctx1.clearRect(0,0,canvas2.width, canvas2.height);
 }
 
-function drawTriangle(e){
+const drawTriangle = (e) =>{
 	if((painting == false)||(active[5]==false)) return;
 	ctx2.clearRect(0,0,canvas2.width, canvas2.height);
 
@@ -186,7 +181,7 @@ function drawTriangle(e){
 	ctx2.stroke();
 }
 
-function finishTriangle(e){
+const finishTriangle = (e) =>{
 	painting = false;
 	
 	ctx1.drawImage(canvas3,0,0);
@@ -200,7 +195,7 @@ function finishTriangle(e){
 
 
 //CIRLCE
-function startCircle(e){
+const startCircle = (e) => {
 	painting = true;
 	if(active[6]==false) return;
 	startX = e.pageX;
@@ -210,7 +205,7 @@ function startCircle(e){
 	ctx1.clearRect(0,0,canvas2.width, canvas2.height);
 }
 
-function drawCircle(e){
+const drawCircle = (e) => {
 	if((painting == false)||(active[6] == false)) return;
 	ctx2.clearRect(0,0,canvas2.width, canvas2.height);
 	ctx2.beginPath();
@@ -219,7 +214,7 @@ function drawCircle(e){
 	ctx2.stroke();
 }
 
-function finishCircle(e){
+const finishCircle = () =>{
 	painting = false;
 	
 	ctx1.drawImage(canvas3,0,0);

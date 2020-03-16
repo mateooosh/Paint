@@ -7,6 +7,11 @@ canvas{
 	border:solid 1px black;
 }
 
+div{
+	font-size:20px;
+	font-family:sans-serif;
+}
+
 #canvas1{
 	float:left;
 }
@@ -34,7 +39,7 @@ canvas{
 }
 
 .option{
-	padding:10px;
+	padding:5px 10px;
 	border-radius:5px;
 	width:100px;
 	text-align:center;
@@ -50,10 +55,9 @@ canvas{
 }
 
 #palette{
-	width:76px;
-	float:left;
+	width:70%;
 	margin-left:20px;
-
+	display:inline-block;
 }
 
 .color{
@@ -84,6 +88,37 @@ canvas{
 	color:#4444FF;
 }
 
+input{
+	width:130px;
+	font-size:20px;
+	text-align: center;
+	border-radius:3px;
+	border:solid 1px #4444FF;
+}
+
+#width{
+	width:100px;
+	margin-top:10px;
+}
+
+#submit, #clear, #download{
+	margin-top:8px;
+	display:block;
+	background-color: #4444FF;
+	border:solid 2px #4444FF;
+	border-radius:5px;
+	font-size:20px;
+	color:white;
+	padding:5px 0 5px 0;
+}
+
+#submit:hover, #clear:hover, #download:hover{
+	background-color: white;
+	color:#4444FF;
+	cursor:pointer;
+}
+
+
 #color1{
 	background-color: lime;
 }
@@ -98,7 +133,6 @@ canvas{
 
 #color4{
 	background-color: orange;
-
 }
 
 #color5{
@@ -148,38 +182,6 @@ canvas{
 #color16{
 	background-color: black;
 	border-width:4px;
-}
-
-input{
-	width:130px;
-	font-size:20px;
-	text-align: center;
-	border-radius:3px;
-	border:solid 1px #4444FF;
-}
-
-#options{
-	float:left;
-	width:130px;
-	margin-top:10px;
-	margin-left:15px;
-}
-
-#submit, #clear, #download{
-	margin-top:8px;
-	display:block;
-	background-color: #4444FF;
-	border:solid 2px #4444FF;
-	border-radius:5px;
-	font-size:20px;
-	color:white;
-	padding:5px 0 5px 0;
-}
-
-#submit:hover, #clear:hover, #download:hover{
-	background-color: white;
-	color:#4444FF;
-	cursor:pointer;
 }
 
 

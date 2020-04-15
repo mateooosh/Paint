@@ -3,30 +3,91 @@
  	<head>
     	<meta charset="utf-8" />
     	<title>Paint</title>
-
+		
+		<script src="https://kit.fontawesome.com/01fbf34917.js" crossorigin="anonymous"></script>
     	<!--FAVICON-->
     	<link href="data:image/x-icon;base64,AAABAAEAEBAAAAAAAABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAABwAAAAoAAAAKAAAACgAAAAoAAAAKAAAACgAAAAoAAAAKAAAACgAAAAoAAAAGAAAAAf///wD///8AAAAAByI+a34gOWKDAAAAKQAAACkAAAApAAAAKcGeg//TspP/zamJ/7eMcP9lPS9nAAAAGQAAAAP///8A////AP///wCWqccsLmqg/S5Tjzz///8A////AKRpWBX+3Lr/zZyBx6RnUg/NmXvH+tCm/7yCZdL///8A////AP///wD///8A////AC5Tj+ZXZprz////AP///wD///8A+tm7/6RpVg////8ApGdSD/7Wrv/90qn/tHhduv///wD///8A////AP///wD///8AppSt+zJUkLf///8ApGxcFfzewP/Nn4fHpGlWD82cgcf+2LL//tau//fLo/+kZE0V////AP///wD///8A////AC5Tj0vVhYb/gXF+w/DTu//+48j//uHD//7ev//uxaH/zIZS/9WVZP/+1q7/yJFz7f///wD///8A////AMCYjdvr1sn/f4iu/9KZnv/q2cr//uXM//7jyP/+4cP/+di7/96XY//WkF3//tiy/+a4lf////8A////ALyWjo3/+/j//Pn1/6m40/9luu3/OmKp///o0f/+5cz//uPI//7hw//nqHn/2Ztq//7atv/uw6H/////AP///wDdycTn//36/w5IxP8JPrv/a4Sv/0it//+Kmrf//+3b//7lzf/+48j//uHD//7ev//+3Lr/6cCf/////wD///8A59jV/f/+/P8sX9L/Qm7M///7+P9Pf7X/MXrT//nx6//Y5M3/ar9//1atbf/t4cz//uXN/920mP////8A////ANW/u9b//v7/xc7h/+fo7v/9+/n/Tcbh/1+g0/84YZj//PTq/3XJiv+n1an/tM2r//zn0P+3gm69////AP///wDXw8BV///+///+/v///v3/4PHz/0fe/P88qdL/TLD//7nBz//+8+n/+e/f//rr2v/x1sL/////AP///wD///8A////ALSOiLj+/fz///7+///+/P+i7fv/X931/1Jxov82dML///Xr///y5v/03s//pG1eM////wD///8A////AP///wD///8ApXlzEsKhnNjw5eL/+/bz//77+P/99/L/TYnB/15znf+9koTS////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AJapxw01crbk////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A//8AAN4fAADeRwAAzuMAAOZDAADwAQAAwAEAAIABAACAAQAAgAEAAIABAADAAwAAwAcAAPAPAAD/3wAA//8AAA==" rel="icon" type="image/x-icon" />
-    	<link rel="stylesheet" href="style.css" type="text/css"/>
+    	<link rel="stylesheet" href="css/style.css" type="text/css"/>
  	</head>
 
 	<body>
+		<header>
+			<div class="headerOption">
+				<label>
+					<input id="setWidth" type="number" name="width" value="1080" min="0">
+					<i class="fas fa-arrows-alt-h"></i>
+				</label>
+
+				<label>
+					<input id="setHeight" type="number" name="height" value="720">
+					<i class="fas fa-arrows-alt-v" style="margin-left: 4px;"></i>
+				</label>
+				<span>Canvas Size</span>
+			</div>
+
+			<div class="headerOption">
+				<button id="clear" >Clear</button>
+		    	<button id="download" >Download</button>
+				<span>Settings</span>
+			</div>
+
+			<div class="headerOption">
+				<label name="form">
+			    	<input id="width" type="number" value="5">
+					<select name="selectLineCap" id="setLineCap">
+						<option>butt</option>
+						<option>square</option>
+						<option selected>round</option>
+					</select>
+			    </label>	
+				<span>Pencil Size</span>
+			</div>
+
+			<div class="headerOption">
+				<div class="tools active" id="option1" onClick="change(1);">
+					<i class="fas fa-pencil-alt"></i>
+				</div>
+
+				<div class="tools inactive"  id="option2" onClick="change(2);">
+					<i class="fas fa-square"></i>
+				</div>
+
+				<div class="tools inactive"  id="option3" onClick="change(3);">
+					<i class="far fa-square"></i>
+				</div>
+
+				<div class="tools inactive"  id="option4" onClick="change(4);">
+					<i class="fas fa-eraser"></i>
+				</div>
+
+				<div class="tools inactive"  id="option5" onClick="change(5);">
+					<i class="fas fa-slash"></i>
+				</div>
+
+				<div class="tools inactive"  id="option6" onClick="change(6);">
+					<i ><img  style="margin-top:2px;" src="img/triangle.png" width="20" height="20"></i>
+				</div>
+
+				<div class="tools inactive"  id="option7" onClick="change(7);">
+					<i class="far fa-circle"></i>
+				</div>
+				
+				<span>Tools</span>
+			</div>
+			
+			<div class="headerOption">
+					
+				<span>Color</span>
+			</div>
+
+			
+
+			<div style="clear:both;"></div>
+		</header>
+
 	    <canvas id="canvas1"></canvas>
 	    <canvas id="canvas2"></canvas>
 	    <canvas id="canvas3"></canvas>
-	    <div id="dashboard">
-	    	<div class = "option active"   id="option1" onClick="change(1);">Pencil</div>
-    		<div class = "option inactive" id="option2" onClick="change(2);">Fillrect</div>
-    		<div class = "option inactive" id="option3" onClick="change(3);">Rect</div>
-    		<div class = "option inactive" id="option4" onClick="change(4);">Eraser</div>
-    		<div class = "option inactive" id="option5" onClick="change(5);">Line</div>
-    		<div class = "option inactive" id="option6" onClick="change(6);">Triangle</div>
-    		<div class = "option inactive" id="option7" onClick="change(7);">Circle</div>
-    		<form name="form">
-		    	<input id="width"   type="text" placeholder="Size">
-		    </form>	
-		    <div id="clear" class="option">Clear</div>
-		    <div  id="download" class="option">Download</div>
-	    </div>
 
 	    <div id="palette">
 	    	<div class = "color" id = "color1"  onClick="changeColor('lime');"></div>
@@ -47,11 +108,12 @@
 	    	<div class = "color" id = "color16" onClick="changeColor('black');"></div>
 	    </div>
 
-	    <div id="proba" style="font-size:20px; ">Size: 5</div>
+	    <div id="proba" style="font-size:20px; "></div>
+	    <div id="proba2" style="font-size:20px; "></div>
 
-		<script src="jquery-3.4.1.min.js"></script>
-		<script src="functions.js"></script>
-	    <script src="script.js"></script>
+		<script src="js/jquery-3.4.1.min.js"></script>
+		<script src="js/functions.js"></script>
+	    <script src="js/script.js"></script>
 
 	</body>
 </html>

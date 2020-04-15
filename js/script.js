@@ -1,17 +1,17 @@
 let canvas1 = document.getElementById('canvas1');
-canvas1.height = window.innerHeight*4/5;
-canvas1.width = window.innerWidth*2/3;
+canvas1.height = document.getElementById('setHeight').value;
+canvas1.width = document.getElementById('setWidth').value;
 let ctx1 = canvas1.getContext("2d");
 
 let canvas2 = document.getElementById('canvas2');
 let ctx2 = canvas2.getContext("2d");
-canvas2.height = window.innerHeight*4/5;
-canvas2.width = window.innerWidth*2/3;
+canvas2.height = document.getElementById('setHeight').value;
+canvas2.width = document.getElementById('setWidth').value;
 
 let canvas3 = document.getElementById('canvas3');
 let ctx3 = canvas3.getContext("2d");
-canvas3.height = window.innerHeight*4/5;
-canvas3.width = window.innerWidth*2/3;
+canvas3.height = document.getElementById('setHeight').value;
+canvas3.width = document.getElementById('setWidth').value;
 
 let painting = false;
 let startX, startY;
@@ -47,82 +47,66 @@ const changeColor = (value) =>{
 	resetColor();
 	switch(value){
 		case 'lime':
-			//document.getElementById("color1").style.borderWidth='4px';
 			$('#color1').css('border-width','4px');
 			break;
 
 		case 'green':
-			//document.getElementById("color2").style.borderWidth='4px';
 			$('#color2').css('border-width','4px');
 			break;
 
 		case 'red':
-			//document.getElementById("color3").style.borderWidth='4px';
 			$('#color3').css('border-width','4px');
 			break;
 
 		case 'orange':
-			//document.getElementById("color4").style.borderWidth='4px';
 			$('#color4').css('border-width','4px');
 			break;
 
 		case 'yellow':
-			//document.getElementById("color5").style.borderWidth='4px';
 			$('#color5').css('border-width','4px');
 			break;
 
 		case 'brown':
-			//document.getElementById("color6").style.borderWidth='4px';
 			$('#color6').css('border-width','4px');
 			break;
 
 		case 'blue':
-			//document.getElementById("color7").style.borderWidth='4px';
 			$('#color7').css('border-width','4px');
 			break;
 
 		case 'fuchsia':
-			//document.getElementById("color8").style.borderWidth='4px';
 			$('#color8').css('border-width','4px');
 			break;
 
 		case 'navy':
-			//document.getElementById("color9").style.borderWidth='4px';
 			$('#color9').css('border-width','4px');
 			break;
 
 		case 'purple':
-			//document.getElementById("color10").style.borderWidth='4px';
 			$('#color10').css('border-width','4px');
 			break;
 
 		case 'teal':
-			//document.getElementById("color11").style.borderWidth='4px';
 			$('#color11').css('border-width','4px');
 			break;
 
 		case 'aqua':
-			//document.getElementById("color12").style.borderWidth='4px';
 			$('#color12').css('border-width','4px');
 			break;
 
 		case 'gold':
-			//document.getElementById("color13").style.borderWidth='4px';
 			$('#color13').css('border-width','4px');
 			break;
 
 		case 'silver':
-			//document.getElementById("color14").style.borderWidth='4px';
 			$('#color14').css('border-width','4px');
 			break;
 
 		case 'gray':
-			//document.getElementById("color15").style.borderWidth='4px';
 			$('#color15').css('border-width','4px');
 			break;
 
 		case 'black':
-			//document.getElementById("color16").style.borderWidth='4px';
 			$('#color16').css('border-width','4px');
 			break;
 	}
@@ -151,8 +135,18 @@ const changeSize = () =>{
 
 paint.changeLineWidth = function (value) {
 	this.lineWidth = value;
-	//document.getElementById('proba').innerHTML = 'Size: '+this.lineWidth;
 	$('#proba').html('Size changed to: '+this.lineWidth);
+	main();
+}
+
+const changeCap = () =>{
+	let value = document.getElementById("setLineCap").value;
+	paint.changeLineCap(value);
+}
+
+paint.changeLineCap = function (value) {
+	this.lineCap = value;
+	$('#proba').html('Line Cap changed to: '+this.lineCap);
 	main();
 }
 
@@ -164,7 +158,6 @@ const change = (v) =>{
 
 paint.changeMode = function (value) {
 	this.mode = value;
-	//document.getElementById('proba').innerHTML = this.mode;
 	main();
 }
 
@@ -172,10 +165,10 @@ paint.changeMode = function (value) {
 const setActive = (v) =>{
 	for(let i=1; i<8; i++){
 		active[i-1] = false;
-		document.getElementById('option'+i).setAttribute('class', 'option inactive');
+		document.getElementById('option'+i).setAttribute('class', 'tools inactive');
 	}
 	active[v-1] = true;
-	document.getElementById('option'+v).setAttribute('class', 'option active');
+	document.getElementById('option'+v).setAttribute('class', 'tools active');
 }
 
 const offListeners = () =>{
@@ -297,7 +290,7 @@ const main = () =>{
 	}
 }
 
-$("#width").on("keyup", changeSize); 
+$("#width").on("change", changeSize); 
 $("#clear").on("click", clear); 
 $("#download").on("click", getImage);
 $(window).on("load", main);
@@ -318,6 +311,26 @@ function clear(){
 	ctx2.clearRect(0,0,canvas2.width, canvas2.height);
 	ctx3.clearRect(0,0,canvas3.width, canvas3.height);
 }
+
+function setCanvasSize(){
+	canvas1.height = document.getElementById('setHeight').value;
+	canvas1.width = document.getElementById('setWidth').value;
+
+	canvas2.height = document.getElementById('setHeight').value;
+	canvas2.width = document.getElementById('setWidth').value;
+
+	canvas3.height = document.getElementById('setHeight').value;
+	canvas3.width = document.getElementById('setWidth').value;
+
+	$('#proba').html(`Width: ${canvas1.width}`);
+	$('#proba2').html(`Height: ${canvas1.height}`);
+
+	main();
+}
+
+$("#setHeight").on("change", setCanvasSize);
+$("#setWidth").on("change", setCanvasSize);
+$("#setLineCap").on("change", changeCap);
 
 
 

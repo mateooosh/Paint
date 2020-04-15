@@ -1,0 +1,251 @@
+*{
+	box-sizing: border-box;
+	margin:0;
+}
+
+header{
+	width:100%;
+	height:100px;
+	background-color: rgb(220,220,255);
+}
+
+.headerOption{
+	float:left;
+	position: relative;
+	width:140px;
+	height:100px;
+	padding:15px 1px 0;
+	border-right:2px solid black;
+}
+
+label{
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+label #setWidth, label #setHeight{
+	
+	margin-left:8px;
+}
+
+label #setHeight{
+	margin-top:5px;
+}
+
+
+.tools{
+	/*margin:3px;*/
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom:5px;
+	height:30px;
+	width:30px;
+	border:1px solid black;
+	border-radius: 5px;
+	display: inline-block;
+	background-color: white;
+}
+
+.tools:hover{
+	cursor:pointer;
+	background-color: #66f;
+}
+
+.tools i{
+	margin:5px;
+}
+
+
+canvas{
+	border:solid 1px black;
+}
+
+div{
+	font-size:20px;
+}
+
+span{
+	position:absolute;
+	bottom:2px;
+	font-size:14px;
+	display:block;
+	width:100%;
+	text-align: center;
+}
+
+
+#clear, #download{
+	display: block;
+	padding-top:2px;
+	margin-top:5px;
+	margin-left:auto;
+	margin-right: auto;
+	width:100px;
+	height:27px;
+	font-size:20px;
+	background-color: white;
+	text-align: center;
+	border-radius:3px;
+	border:solid 1px #4444FF;
+	cursor:pointer;
+}
+span:hover{cursor: pointer;}
+
+#clear{
+	margin-top:0;
+}
+
+#clear:hover, #download:hover{
+	background-color: #4444FF;
+	color:white;
+	cursor:pointer;
+}
+
+#width{
+	display: block;
+	width:100px;
+	margin:0 auto;
+}
+
+select{
+	display:block;
+	margin:5px auto 0;
+	font-size:20px;
+}
+
+#canvas1{
+	float:left;
+}
+
+#canvas2{
+	position:absolute;
+	left:0;
+	top:100px;
+	z-index: -1;
+}
+
+#canvas3{
+	position:absolute;
+	left:0;
+	top:100px;
+	z-index: -2;
+}
+
+#palette{
+	width:70%;
+	margin-left:20px;
+	display:inline-block;
+}
+
+.color{
+	width:30px;
+	height:30px;
+	background-color: red;
+	margin:10px 6px 0 0;
+	display:inline-block;
+	border: 1px solid #333333;
+}
+
+.color:hover{
+	cursor:pointer;
+}
+
+.inactive{
+	background-color:  rgb(220,220,255);
+}
+
+.inactive:hover{
+	background-color: #66f;
+}
+
+.active{
+	background-color: #66f;
+}
+
+input{
+	width:100px;
+	font-size:20px;
+	text-align: center;
+	border-radius:3px;
+	border:solid 1px #4444FF;
+}
+
+
+
+
+
+#proba, #proba2{
+	margin-left:18px;
+}
+
+#color1{
+	background-color: lime;
+}
+
+#color2{
+	background-color: green;
+}
+
+#color3{
+	background-color: red;
+}
+
+#color4{
+	background-color: orange;
+}
+
+#color5{
+	background-color: yellow;
+}
+
+#color6{
+	background-color: brown;
+}
+
+#color7{
+	background-color: blue;
+}
+
+#color8{
+	background-color: fuchsia;
+}
+
+#color9{
+	background-color: navy;
+}
+
+#color10{
+	background-color: purple;
+}
+
+#color11{
+	background-color: teal;
+}
+
+#color12{
+	background-color: aqua;
+}
+
+#color13{
+	background-color: gold;
+}
+
+#color14{
+	background-color: silver;
+}
+
+#color15{
+	background-color: grey;
+}
+
+#color16{
+	background-color: black;
+	border-width:4px;
+}
+
+.fa-slash{
+	margin:5px 2px 5px  !important;
+
+}
+

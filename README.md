@@ -1,2 +1,2 @@
-# Paint v1.1
+# Paint
 [Click here to see](https://mateooosh.github.io/Paint/)

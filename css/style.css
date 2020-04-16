@@ -57,6 +57,51 @@ label #setHeight{
 }
 
 
+
+.backgroundColor{
+	position:relative;
+	width:50px;
+	height: 50px;
+	background-color: rgb(180,180,255);
+	margin:7px auto 0 auto;
+}
+
+.currentColor{
+	position:absolute;
+	top:5px;
+	left:5px;
+	width:40px;
+	height: 40px;
+	background-color: red;
+
+}
+
+.headerOption:nth-child(6){
+	width:350px;
+}
+
+
+#palette{
+	width:270px;
+}
+
+.color:nth-child(1), .color:nth-child(9){
+	margin-left:10px;
+}
+
+.color{
+	box-shadow:0 0 1px 1px;
+	width:25px;
+	height:25px;
+	margin:3px 2px 0 0;
+	display:inline-block;
+	border: 1px solid #ccc;
+}
+
+.color:hover{
+	cursor:pointer;
+}
+
 canvas{
 	border:solid 1px black;
 }
@@ -90,7 +135,6 @@ span{
 	border:solid 1px #4444FF;
 	cursor:pointer;
 }
-span:hover{cursor: pointer;}
 
 #clear{
 	margin-top:0;
@@ -132,24 +176,7 @@ select{
 	z-index: -2;
 }
 
-#palette{
-	width:70%;
-	margin-left:20px;
-	display:inline-block;
-}
 
-.color{
-	width:30px;
-	height:30px;
-	background-color: red;
-	margin:10px 6px 0 0;
-	display:inline-block;
-	border: 1px solid #333333;
-}
-
-.color:hover{
-	cursor:pointer;
-}
 
 .inactive{
 	background-color:  rgb(220,220,255);

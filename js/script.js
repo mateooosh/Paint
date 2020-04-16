@@ -47,67 +47,67 @@ const changeColor = (value) =>{
 	resetColor();
 	switch(value){
 		case 'lime':
-			$('#color1').css('border-width','4px');
+			$('.currentColor').css('background-color','lime');
 			break;
 
 		case 'green':
-			$('#color2').css('border-width','4px');
+			$('.currentColor').css('background-color','green');
 			break;
 
 		case 'red':
-			$('#color3').css('border-width','4px');
+			$('.currentColor').css('background-color','red');
 			break;
 
 		case 'orange':
-			$('#color4').css('border-width','4px');
+			$('.currentColor').css('background-color','orange');
 			break;
 
 		case 'yellow':
-			$('#color5').css('border-width','4px');
+			$('.currentColor').css('background-color','yellow');
 			break;
 
 		case 'brown':
-			$('#color6').css('border-width','4px');
+			$('.currentColor').css('background-color','brown');
 			break;
 
 		case 'blue':
-			$('#color7').css('border-width','4px');
+			$('.currentColor').css('background-color','blue');
 			break;
 
 		case 'fuchsia':
-			$('#color8').css('border-width','4px');
+			$('.currentColor').css('background-color','fuchsia');
 			break;
 
 		case 'navy':
-			$('#color9').css('border-width','4px');
+			$('.currentColor').css('background-color','navy');
 			break;
 
 		case 'purple':
-			$('#color10').css('border-width','4px');
+			$('.currentColor').css('background-color','purple');
 			break;
 
 		case 'teal':
-			$('#color11').css('border-width','4px');
+			$('.currentColor').css('background-color','teal');
 			break;
 
 		case 'aqua':
-			$('#color12').css('border-width','4px');
+			$('.currentColor').css('background-color','aqua');
 			break;
 
 		case 'gold':
-			$('#color13').css('border-width','4px');
+			$('.currentColor').css('background-color','gold');
 			break;
 
 		case 'silver':
-			$('#color14').css('border-width','4px');
+			$('.currentColor').css('background-color','silver');
 			break;
 
 		case 'gray':
-			$('#color15').css('border-width','4px');
+			$('.currentColor').css('background-color','gray');
 			break;
 
 		case 'black':
-			$('#color16').css('border-width','4px');
+			$('.currentColor').css('background-color','black');
 			break;
 	}
 }
@@ -122,14 +122,10 @@ paint.changeStyle = function (value){
 const changeSize = () =>{
 	let value = document.getElementById("width").value;
 	if(value<1){
-		alert("Podana wartość jest mniejsza od 0, Size = 1");
+		alert(`The value entered is less than 0, Size = 1`);
 		value=1;
 	}
 
-	if(isNaN(value)){
-		alert("Wprowadzona wartość nie jest liczbą!");
-		return;
-	}
 	paint.changeLineWidth(value);
 }
 

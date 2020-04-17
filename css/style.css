@@ -104,6 +104,7 @@ label #setHeight{
 
 canvas{
 	border:solid 1px black;
+	cursor:crosshair;
 }
 
 div{
@@ -268,7 +269,6 @@ input{
 
 #color16{
 	background-color: black;
-	border-width:4px;
 }
 
 .fa-slash{

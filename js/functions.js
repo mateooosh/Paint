@@ -166,7 +166,7 @@ const startTriangle = (e) =>{
 	painting = true;
 	if(active[5]==false) return;
 	startX = e.pageX;
-	startY = e.pageY;
+	startY = e.pageY-100;
 
 	ctx3.drawImage(canvas1,0,0);
 	ctx1.clearRect(0,0,canvas2.width, canvas2.height);
@@ -177,10 +177,10 @@ const drawTriangle = (e) =>{
 	ctx2.clearRect(0,0,canvas2.width, canvas2.height);
 
 	ctx2.beginPath();
-	ctx2.moveTo(startX, e.pageY);
+	ctx2.moveTo(startX, e.pageY - 100);
 	ctx2.lineTo((e.pageX+startX)/2, startY);
-	ctx2.lineTo(e.pageX, e.pageY);
-	ctx2.lineTo(startX, e.pageY);
+	ctx2.lineTo(e.pageX, e.pageY - 100);
+	ctx2.lineTo(startX, e.pageY - 100);
 	ctx2.stroke();
 }
 
@@ -202,7 +202,7 @@ const startCircle = (e) => {
 	painting = true;
 	if(active[6]==false) return;
 	startX = e.pageX;
-	startY = e.pageY;
+	startY = e.pageY - 100;
 
 	ctx3.drawImage(canvas1,0,0);
 	ctx1.clearRect(0,0,canvas2.width, canvas2.height);
@@ -212,8 +212,8 @@ const drawCircle = (e) => {
 	if((painting == false)||(active[6] == false)) return;
 	ctx2.clearRect(0,0,canvas2.width, canvas2.height);
 	ctx2.beginPath();
-	ctx2.arc((e.pageX-startX)/2+startX,(e.pageY-startY)/2+startY,
-		Math.abs(((e.pageX-startX)/2+(e.pageY-startY)/2)/2), 0,10*Math.PI);
+	ctx2.arc((e.pageX-startX)/2+startX,(e.pageY-100-startY)/2+startY,
+		Math.abs(((e.pageX-startX)/2+(e.pageY-100-startY)/2)/2), 0,10*Math.PI);
 	ctx2.stroke();
 }
 

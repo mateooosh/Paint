@@ -12,11 +12,11 @@ const startPencil = (e) => {
 	ctx2.moveTo(e.pageX, e.pageY - 100);
 	ctx2.lineTo(e.pageX, e.pageY - 100);
 	ctx2.stroke();
+
 }
 
 const drawPencil = (e) =>{
 	if((painting == false)||(active[0] == false)) return;
-
 	ctx2.lineTo(e.pageX, e.pageY - 100);
 	ctx2.stroke();
 }

@@ -37,14 +37,9 @@ strokeStyle: 'black',
 
 };
 
-const resetColor = () =>{
-	for(let i=1; i<17; i++)
-		$("#color"+i).css('border-width', '1px');
-}
 
 const changeColor = (value) =>{
 	paint.changeStyle(value);
-	resetColor();
 	switch(value){
 		case 'lime':
 			$('.currentColor').css('background-color','lime');
@@ -328,5 +323,67 @@ $("#setHeight").on("change", setCanvasSize);
 $("#setWidth").on("change", setCanvasSize);
 $("#setLineCap").on("change", changeCap);
 
+$(".RGB").on('click', editColor);
+
+function editColor(){
+	$('.backgroundPicker').css('display', 'block'); 
+	$('.backgroundPicker').css('width', '100%');
+	$('.backgroundPicker').css('min-height', 100+canvas1.height+'px');
+	
+	$('#R').on('change', checkColor);
+	$('#G').on('change', checkColor);
+	$('#B').on('change', checkColor);
+
+	$('#apply').on('click', apply);
+	$('#cancel').on('click', cancel);
+}
+
+function checkColor(){
+	var R = document.getElementById('R').value;
+	var G = document.getElementById('G').value;
+	var B = document.getElementById('B').value;
+
+	if(R>255){
+		R=255;
+		document.getElementById('R').value = 255;
+	}
+	else if(R<0){
+		R=0;
+		document.getElementById('R').value = 0;
+	}
+
+	if(G>255){
+		G=255;
+		document.getElementById('G').value = 255;
+	}
+	else if(G<0){
+		G=0;
+		document.getElementById('G').value = 0;
+	}
+
+	if(B>255){
+		B=255;
+		document.getElementById('B').value = 255;
+	}
+	else if(B<0){
+		B=0;
+		document.getElementById('B').value = 0;
+	}
+
+	$('.picker-currentColor').css('background-color', 'rgb('+R+','+G+','+B+')');
+}
+
+function apply(){
+	$('#apply').off('click', apply);
+	$('.backgroundPicker').css('display', 'none'); 
+	$('.currentColor').css('background-color', 'rgb('+document.getElementById('R').value+','+document.getElementById('G').value+','+document.getElementById('B').value+')');
+	paint.changeStyle('rgb('+document.getElementById('R').value+','+document.getElementById('G').value+','+document.getElementById('B').value+')');
+	main();
+}
+
+function cancel(){
+	$('#cancel').off('click', cancel);
+	$('.backgroundPicker').css('display', 'none'); 
+}
 
 

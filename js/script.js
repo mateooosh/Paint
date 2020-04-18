@@ -117,8 +117,9 @@ paint.changeStyle = function (value){
 const changeSize = () =>{
 	let value = document.getElementById("width").value;
 	if(value<1){
-		alert(`The value entered is less than 0, Size = 1`);
+		document.getElementById("width").value = 1;
 		value=1;
+		alert(`The value entered is less than 0, Size = 1`);
 	}
 
 	paint.changeLineWidth(value);
@@ -304,6 +305,16 @@ function clear(){
 }
 
 function setCanvasSize(){
+	if(document.getElementById('setHeight').value <100){
+		alert(`The value entered is less than 100, Canvas Height = 100`);
+		document.getElementById('setHeight').value = 100;
+	}
+
+	if(document.getElementById('setWidth').value <100){
+		alert(`The value entered is less than 100, Canvas Width = 100`);
+		document.getElementById('setWidth').value = 100;
+	}
+
 	canvas1.height = document.getElementById('setHeight').value;
 	canvas1.width = document.getElementById('setWidth').value;
 
@@ -336,6 +347,7 @@ function editColor(){
 
 	$('#apply').on('click', apply);
 	$('#cancel').on('click', cancel);
+	$('.escape').on('click', cancel);
 }
 
 function checkColor(){

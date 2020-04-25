@@ -160,7 +160,7 @@ const setActive = (v) =>{
 		document.getElementById(`option${i}`).setAttribute('class', 'tools inactive');
 	}
 	active[v-1] = true;
-	document.getElementById(`option${v}`).setAttribute('class', 'tools active tooltip');
+	document.getElementById(`option${v}`).setAttribute('class', 'tools active');
 }
 
 const offListeners = () =>{

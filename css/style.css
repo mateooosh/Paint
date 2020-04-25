@@ -1,7 +1,5 @@
 *{
 	box-sizing: border-box;
-	
-
 }
 
 body{
@@ -38,7 +36,6 @@ label #setHeight{
 	margin-top:5px;
 }
 
-
 .tools{
 	/*margin:3px;*/
 	margin-left:auto;
@@ -60,8 +57,6 @@ label #setHeight{
 .tools i{
 	margin:5px;
 }
-
-
 
 .backgroundColor{
 	position:relative;
@@ -301,8 +296,6 @@ select{
 	z-index: -2;
 }
 
-
-
 .inactive{
 	background-color:  rgb(220,220,255);
 }
@@ -322,10 +315,6 @@ input{
 	border-radius:3px;
 	border:solid 1px #4444FF;
 }
-
-
-
-
 
 #proba, #proba2{
 	margin-left:18px;

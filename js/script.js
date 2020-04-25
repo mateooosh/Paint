@@ -127,7 +127,7 @@ const changeSize = () =>{
 
 paint.changeLineWidth = function (value) {
 	this.lineWidth = value;
-	$('#proba').html('Size changed to: '+this.lineWidth);
+	$('#proba').html(`Size changed to: ${this.lineWidth}`);
 	main();
 }
 
@@ -138,7 +138,7 @@ const changeCap = () =>{
 
 paint.changeLineCap = function (value) {
 	this.lineCap = value;
-	$('#proba').html('Line Cap changed to: '+this.lineCap);
+	$('#proba').html(`Line Cap changed to: ${this.lineCap}`);
 	main();
 }
 
@@ -157,10 +157,10 @@ paint.changeMode = function (value) {
 const setActive = (v) =>{
 	for(let i=1; i<8; i++){
 		active[i-1] = false;
-		document.getElementById('option'+i).setAttribute('class', 'tools inactive');
+		document.getElementById(`option${i}`).setAttribute('class', 'tools inactive');
 	}
 	active[v-1] = true;
-	document.getElementById('option'+v).setAttribute('class', 'tools active');
+	document.getElementById(`option${v}`).setAttribute('class', 'tools active tooltip');
 }
 
 const offListeners = () =>{
@@ -282,29 +282,23 @@ const main = () =>{
 	}
 }
 
-$("#width").on("change", changeSize); 
-$("#clear").on("click", clear); 
-$("#download").on("click", getImage);
-$(window).on("load", main);
-
-
-function getImage(){ //DOWNLOAD
+const getImage = () =>{ //DOWNLOAD
 	let imgData = canvas1.toDataURL('image/png'),
 		a = document.createElement("a"),
 		img = document.createElement("img");
 	a.href = imgData;
-	a.download = "obrazek"+new Date().toLocaleTimeString()+".png";
+	a.download = `obrazek${new Date().toLocaleTimeString()}.png`;
 	a.click();
 }
 
 
-function clear(){
+const clear = () =>{
 	ctx1.clearRect(0,0,canvas1.width, canvas1.height);
 	ctx2.clearRect(0,0,canvas2.width, canvas2.height);
 	ctx3.clearRect(0,0,canvas3.width, canvas3.height);
 }
 
-function setCanvasSize(){
+const setCanvasSize = () =>{
 	if(document.getElementById('setHeight').value <100){
 		alert(`The value entered is less than 100, Canvas Height = 100`);
 		document.getElementById('setHeight').value = 100;
@@ -330,13 +324,9 @@ function setCanvasSize(){
 	main();
 }
 
-$("#setHeight").on("change", setCanvasSize);
-$("#setWidth").on("change", setCanvasSize);
-$("#setLineCap").on("change", changeCap);
 
-$(".RGB").on('click', editColor);
 
-function editColor(){
+const editColor = () =>{
 	$('.backgroundPicker').css('display', 'block'); 
 	$('.backgroundPicker').css('width', '100%');
 	$('.backgroundPicker').css('min-height', 100+canvas1.height+'px');
@@ -350,7 +340,7 @@ function editColor(){
 	$('.escape').on('click', cancel);
 }
 
-function checkColor(){
+const checkColor = () =>{
 	var R = document.getElementById('R').value;
 	var G = document.getElementById('G').value;
 	var B = document.getElementById('B').value;
@@ -382,20 +372,29 @@ function checkColor(){
 		document.getElementById('B').value = 0;
 	}
 
-	$('.picker-currentColor').css('background-color', 'rgb('+R+','+G+','+B+')');
+	$('.picker-currentColor').css('background-color', `rgb(${R},${G},${B})`);
 }
 
-function apply(){
+const apply = () =>{
 	$('#apply').off('click', apply);
 	$('.backgroundPicker').css('display', 'none'); 
-	$('.currentColor').css('background-color', 'rgb('+document.getElementById('R').value+','+document.getElementById('G').value+','+document.getElementById('B').value+')');
-	paint.changeStyle('rgb('+document.getElementById('R').value+','+document.getElementById('G').value+','+document.getElementById('B').value+')');
+	$('.currentColor').css('background-color', `rgb(${document.getElementById('R').value},${document.getElementById('G').value},${document.getElementById('B').value})`);
+	paint.changeStyle(`rgb(${document.getElementById('R').value},${document.getElementById('G').value},${document.getElementById('B').value})`);
 	main();
 }
 
-function cancel(){
+const cancel = () =>{
 	$('#cancel').off('click', cancel);
 	$('.backgroundPicker').css('display', 'none'); 
 }
 
+$("#setHeight").on("change", setCanvasSize);
+$("#setWidth").on("change", setCanvasSize);
+$("#setLineCap").on("change", changeCap);
 
+$(".RGB").on('click', editColor);
+
+$("#width").on("change", changeSize); 
+$("#clear").on("click", clear); 
+$("#download").on("click", getImage);
+$(window).on("load", main);

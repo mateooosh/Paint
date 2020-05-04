@@ -155,8 +155,7 @@ const finishLine = () => {
 
 	ctx1.drawImage(canvas3,0,0);
 	ctx1.drawImage(canvas2,0,0);
-
-	ctx1.drawImage(canvas2,0,0);
+	
 	ctx2.clearRect(0,0,canvas2.width, canvas2.height);
 }
 

@@ -12,30 +12,7 @@
 
 	<body>
 
-		<div class="backgroundPicker">
-			<div class="RGBPicker">
-				<div class="headerPicker">Edit Colors
-					<div class="escape"><i class="fas fa-times"></i></div>
-				</div>
-
-				<div class="backgroundColor">
-					<div class="currentColor2 picker-currentColor"></div>
-				</div>	
-				<p style="margin-top:10px;">Current Color</p>
-
-				<label>
-					R=
-					<input type="number" name="red" min="0" max="255" value="0" id="R">
-					G=
-					<input type="number" name="green" min="0" max="255" value="0" id="G">
-					B=
-					<input type="number" name="blue" min="0" max="255" value="0" id="B">
-				</label>
-
-		    	<button id="apply">Apply</button>
-				<button id="cancel">Cancel</button>
-			</div>
-		</div>
+		
 		<header>
 			<div class="headerOption">
 				<label>
@@ -101,43 +78,10 @@
 			</div>
 			
 			<div class="headerOption">
-				<div class="backgroundColor">
-					<div class="currentColor"></div>
-				</div>	
+				<input type="color" id="pick-color">
 				<span>Current Color</span>
 			</div>
 
-			<div class="headerOption">
-				<div id="palette">
-			    	<div class = "color" id = "color1"  onClick="changeColor('lime');"></div>
-			    	<div class = "color" id = "color2"  onClick="changeColor('green');"></div>
-			    	<div class = "color" id = "color3"  onClick="changeColor('red');"></div>
-			    	<div class = "color" id = "color4"  onClick="changeColor('orange');"></div>
-			    	<div class = "color" id = "color5"  onClick="changeColor('yellow');"></div>
-			    	<div class = "color" id = "color6"  onClick="changeColor('brown');"></div>
-			    	<div class = "color" id = "color7"  onClick="changeColor('blue');"></div>
-			    	<div class = "color" id = "color8"  onClick="changeColor('fuchsia');"></div>
-			    	<div class = "color" id = "color9"  onClick="changeColor('navy');"></div>
-			    	<div class = "color" id = "color10" onClick="changeColor('purple');"></div>
-			    	<div class = "color" id = "color11" onClick="changeColor('teal');"></div>
-			    	<div class = "color" id = "color12" onClick="changeColor('aqua');"></div>
-			    	<div class = "color" id = "color13" onClick="changeColor('gold');"></div>
-			    	<div class = "color" id = "color14" onClick="changeColor('silver');"></div>
-			    	<div class = "color" id = "color15" onClick="changeColor('gray');"></div>
-			    	<div class = "color" id = "color16" onClick="changeColor('black');"></div>
-			    </div>
-			    <div class="RGB">
-			    	<img src="img/rgb.jpg" width="45">
-			    	<p>Pick Color</p>
-			    </div>
-
-			    
-				<span>Color</span>
-			</div>
-
-			
-
-			<div style="clear:both;"></div>
 		</header>
 
 	    <canvas id="canvas1"></canvas>
@@ -151,8 +95,8 @@
 		
 		
 
-		<script src="js/jquery-3.4.1.min.js"></script>
-		<script src="js/functions.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="js/drawing.js"></script>
 	    <script src="js/script.js"></script>
 
 	</body>

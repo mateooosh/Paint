@@ -7,15 +7,14 @@ body{
 }
 
 header{
-	width:990px;
 	height:100px;
+	display: flex;
 	background-color: rgb(220,220,255);
 }
 
 .headerOption{
-	float:left;
 	position: relative;
-	width:140px;
+	min-width:140px;
 	height:100px;
 	padding:15px 1px 0;
 	border-right:2px solid #444;
@@ -37,7 +36,7 @@ label #setHeight{
 }
 
 .tools{
-	/*margin:3px;*/
+	margin-top: 10px;
 	margin-left:auto;
 	margin-right:auto;
 	margin-bottom:5px;
@@ -54,169 +53,17 @@ label #setHeight{
 	background-color: #66f;
 }
 
+
 .tools i{
 	margin:5px;
 }
 
-.backgroundColor{
-	position:relative;
-	width:50px;
-	height: 50px;
-	background-color: rgb(180,180,255);
-	margin:7px auto 0 auto;
+.fa-circle{
+	margin-left:4px !important;
 }
 
-.currentColor{
-	position:absolute;
-	top:5px;
-	left:5px;
-	width:40px;
-	height: 40px;
-	background-color: black;
-}
-
-.currentColor2{
-	position:absolute;
-	top:5px;
-	left:5px;
-	width:40px;
-	height: 40px;
-	background-color: black;
-}
-
-.headerOption:nth-child(5){
-	width:100px;
-}
-
-.headerOption:nth-child(6){
-	width:330px;
-	border:none;
-}
-
-#palette{
-	width:270px;
-	float:left;
-}
-
-.color:nth-child(1), .color:nth-child(9){
-	margin-left:10px;
-}
-
-.color{
-	box-shadow:0 0 1px 1px;
-	width:25px;
-	height:25px;
-	margin:3px 2px 0 0;
-	display:inline-block;
-	border: 1px solid #ccc;
-}
-
-.color:hover{
-	cursor:pointer;
-}
-
-.RGB{
-	float:left;
-	margin:2px 0 0 2px;
-	width:45px;
-}
-
-.RGB:hover{
-	cursor:pointer;
-}
-
-p{
-	font-size:12px;
-	text-align: center;
-	margin:0;
-}
-
-.backgroundPicker{
-	display:none;
-	position:absolute;
-	z-index: 10;
-}
-
-.RGBPicker{
-	position: absolute;
-	top:50%;
-	left:50%;
-	width:352px;
-	height:252px;
-	margin:-200px -175px;
-	padding:0 0 20px;
-	background-color: rgb(240,240,240);
-	border:1px solid blue;
-}
-
-.headerPicker{
-	position:relative;
-	width:100%;
-	height:25px;
-	background-color: white;
-	font-family: sans-serif;
-	font-size:15px;
-	padding: 5px 10px;
-	margin-bottom:30px;
-}
-
-.escape{
-	position:absolute;
-	height: 25px;
-	top:0;
-	right:0;
-	background-color: rgb(232,17,35);
-}
-
-.escape:hover{
-	cursor:pointer;
-}
-
-.escape i{
-	color:white;
-	float:right;
-	padding-right:10px;
-	padding-left:10px;
-	padding-top:3px;
-	padding-bottom:2px;
-}
-
-.picker-currentColor{
-	background-color: black;
-}
-
-.RGBPicker label{
-	margin-top:20px;
-	width:310px;
-}
-
-#R, #G, #B{
-	width:70px;
-	text-align: right;
-}
-
-#cancel, #apply{
-	width:70px;
-	position:absolute;
-	bottom:10px;
-	background-color: white;
-	text-align: center;
-	border-radius:3px;
-	border:solid 1px #4444FF;
-}
-
-#cancel{
-	right:100px;
-}
-
-#apply{
-	left:100px;
-}
-
-#cancel:hover, #apply:hover{
-	background-color: #4444FF;
-	color:white;
-	cursor:pointer;
+.headerOption:nth-child(4){
+	min-width:245px;
 }
 
 canvas{
@@ -316,72 +163,22 @@ input{
 	border:solid 1px #4444FF;
 }
 
+select{
+	border: solid 1px #4444FF;
+}
+
+#pick-color{
+	width:50px;
+	height: 50px;
+	position: absolute;
+	left:50%;
+	top: 50%;
+	margin-left: -25px;
+	margin-top: -28px
+}
+
 #proba, #proba2{
 	margin-left:18px;
-}
-
-#color1{
-	background-color: lime;
-}
-
-#color2{
-	background-color: green;
-}
-
-#color3{
-	background-color: red;
-}
-
-#color4{
-	background-color: orange;
-}
-
-#color5{
-	background-color: yellow;
-}
-
-#color6{
-	background-color: brown;
-}
-
-#color7{
-	background-color: blue;
-}
-
-#color8{
-	background-color: fuchsia;
-}
-
-#color9{
-	background-color: navy;
-}
-
-#color10{
-	background-color: purple;
-}
-
-#color11{
-	background-color: teal;
-}
-
-#color12{
-	background-color: aqua;
-}
-
-#color13{
-	background-color: gold;
-}
-
-#color14{
-	background-color: silver;
-}
-
-#color15{
-	background-color: grey;
-}
-
-#color16{
-	background-color: black;
 }
 
 .fa-slash{

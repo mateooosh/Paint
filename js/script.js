@@ -1,3 +1,4 @@
+
 let canvas1 = document.getElementById('canvas1');
 canvas1.height = document.getElementById('setHeight').value;
 canvas1.width = document.getElementById('setWidth').value;
@@ -37,75 +38,6 @@ strokeStyle: 'black',
 
 };
 
-
-const changeColor = (value) =>{
-	paint.changeStyle(value);
-	switch(value){
-		case 'lime':
-			$('.currentColor').css('background-color','lime');
-			break;
-
-		case 'green':
-			$('.currentColor').css('background-color','green');
-			break;
-
-		case 'red':
-			$('.currentColor').css('background-color','red');
-			break;
-
-		case 'orange':
-			$('.currentColor').css('background-color','orange');
-			break;
-
-		case 'yellow':
-			$('.currentColor').css('background-color','yellow');
-			break;
-
-		case 'brown':
-			$('.currentColor').css('background-color','brown');
-			break;
-
-		case 'blue':
-			$('.currentColor').css('background-color','blue');
-			break;
-
-		case 'fuchsia':
-			$('.currentColor').css('background-color','fuchsia');
-			break;
-
-		case 'navy':
-			$('.currentColor').css('background-color','navy');
-			break;
-
-		case 'purple':
-			$('.currentColor').css('background-color','purple');
-			break;
-
-		case 'teal':
-			$('.currentColor').css('background-color','teal');
-			break;
-
-		case 'aqua':
-			$('.currentColor').css('background-color','aqua');
-			break;
-
-		case 'gold':
-			$('.currentColor').css('background-color','gold');
-			break;
-
-		case 'silver':
-			$('.currentColor').css('background-color','silver');
-			break;
-
-		case 'gray':
-			$('.currentColor').css('background-color','gray');
-			break;
-
-		case 'black':
-			$('.currentColor').css('background-color','black');
-			break;
-	}
-}
 
 paint.changeStyle = function (value){
 	this.fillStyle = value;
@@ -323,78 +255,22 @@ const setCanvasSize = () =>{
 
 	main();
 }
-
-
-
-const editColor = () =>{
-	$('.backgroundPicker').css('display', 'block'); 
-	$('.backgroundPicker').css('width', '100%');
-	$('.backgroundPicker').css('min-height', 100+canvas1.height+'px');
-	
-	$('#R').on('change', checkColor);
-	$('#G').on('change', checkColor);
-	$('#B').on('change', checkColor);
-
-	$('#apply').on('click', apply);
-	$('#cancel').on('click', cancel);
-	$('.escape').on('click', cancel);
-}
-
-const checkColor = () =>{
-	var R = document.getElementById('R').value;
-	var G = document.getElementById('G').value;
-	var B = document.getElementById('B').value;
-
-	if(R>255){
-		R=255;
-		document.getElementById('R').value = 255;
-	}
-	else if(R<0){
-		R=0;
-		document.getElementById('R').value = 0;
-	}
-
-	if(G>255){
-		G=255;
-		document.getElementById('G').value = 255;
-	}
-	else if(G<0){
-		G=0;
-		document.getElementById('G').value = 0;
-	}
-
-	if(B>255){
-		B=255;
-		document.getElementById('B').value = 255;
-	}
-	else if(B<0){
-		B=0;
-		document.getElementById('B').value = 0;
-	}
-
-	$('.picker-currentColor').css('background-color', `rgb(${R},${G},${B})`);
-}
-
-const apply = () =>{
-	$('#apply').off('click', apply);
-	$('.backgroundPicker').css('display', 'none'); 
-	$('.currentColor').css('background-color', `rgb(${document.getElementById('R').value},${document.getElementById('G').value},${document.getElementById('B').value})`);
-	paint.changeStyle(`rgb(${document.getElementById('R').value},${document.getElementById('G').value},${document.getElementById('B').value})`);
-	main();
-}
-
-const cancel = () =>{
-	$('#cancel').off('click', cancel);
-	$('.backgroundPicker').css('display', 'none'); 
-}
-
 $("#setHeight").on("change", setCanvasSize);
 $("#setWidth").on("change", setCanvasSize);
 $("#setLineCap").on("change", changeCap);
 
-$(".RGB").on('click', editColor);
 
 $("#width").on("change", changeSize); 
 $("#clear").on("click", clear); 
 $("#download").on("click", getImage);
 $(window).on("load", main);
+
+
+
+
+$("#pick-color").on("change", function(event) {
+	$('.currentColor').css('background-color', `${event.target.value}`);
+	paint.changeStyle(`${event.target.value}`);
+	
+	main();	
+})

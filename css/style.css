@@ -14,10 +14,10 @@ header{
 
 .headerOption{
 	position: relative;
-	min-width:140px;
+	min-width:160px;
 	height:100px;
 	padding:15px 1px 0;
-	border-right:2px solid #444;
+	border-right:1px solid #444;
 }
 
 label{
@@ -28,7 +28,7 @@ label{
 
 label #setWidth, label #setHeight{
 	
-	margin-left:8px;
+	margin-left:17px;
 }
 
 label #setHeight{

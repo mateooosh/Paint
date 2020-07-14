@@ -1,18 +1,20 @@
-
 let canvas1 = document.getElementById('canvas1');
-canvas1.height = document.getElementById('setHeight').value;
-canvas1.width = document.getElementById('setWidth').value;
+canvas1.height = window.innerHeight - 102;
+canvas1.width = window.innerWidth-2;
 let ctx1 = canvas1.getContext("2d");
 
 let canvas2 = document.getElementById('canvas2');
 let ctx2 = canvas2.getContext("2d");
-canvas2.height = document.getElementById('setHeight').value;
-canvas2.width = document.getElementById('setWidth').value;
+canvas2.height = window.innerHeight - 102;
+canvas2.width = window.innerWidth-2;
 
 let canvas3 = document.getElementById('canvas3');
 let ctx3 = canvas3.getContext("2d");
-canvas3.height = document.getElementById('setHeight').value;
-canvas3.width = document.getElementById('setWidth').value;
+canvas3.height = window.innerHeight - 102;
+canvas3.width = window.innerWidth-2;
+
+$("#setHeight").val(window.innerHeight - 102);
+$("#setWidth").val(window.innerWidth - 2);
 
 let painting = false;
 let startX, startY;
@@ -47,9 +49,9 @@ paint.changeStyle = function (value){
 
 
 const changeSize = () =>{
-	let value = document.getElementById("width").value;
+	let value = $("#width").val();
 	if(value<1){
-		document.getElementById("width").value = 1;
+		$("#width").val(1);
 		value=1;
 		alert(`The value entered is less than 0, Size = 1`);
 	}
@@ -59,18 +61,17 @@ const changeSize = () =>{
 
 paint.changeLineWidth = function (value) {
 	this.lineWidth = value;
-	$('#proba').html(`Size changed to: ${this.lineWidth}`);
 	main();
 }
 
 const changeCap = () =>{
-	let value = document.getElementById("setLineCap").value;
+	// let value = document.getElementById("setLineCap").value;
+	let value = $("#setLineCap").val(); 
 	paint.changeLineCap(value);
 }
 
 paint.changeLineCap = function (value) {
 	this.lineCap = value;
-	$('#proba').html(`Line Cap changed to: ${this.lineCap}`);
 	main();
 }
 
@@ -219,7 +220,7 @@ const getImage = () =>{ //DOWNLOAD
 		a = document.createElement("a"),
 		img = document.createElement("img");
 	a.href = imgData;
-	a.download = `obrazek${new Date().toLocaleTimeString()}.png`;
+	a.download = `image${new Date().toLocaleTimeString()}.png`;
 	a.click();
 }
 
@@ -231,27 +232,24 @@ const clear = () =>{
 }
 
 const setCanvasSize = () =>{
-	if(document.getElementById('setHeight').value <100){
+	if ($("#setHeight").val() <100){
 		alert(`The value entered is less than 100, Canvas Height = 100`);
-		document.getElementById('setHeight').value = 100;
+		$("#setHeight").val(100);
 	}
 
-	if(document.getElementById('setWidth').value <100){
+	if ($("#setWidth").val() < 100){
 		alert(`The value entered is less than 100, Canvas Width = 100`);
-		document.getElementById('setWidth').value = 100;
+		$("#setWidth").val(100)
 	}
 
-	canvas1.height = document.getElementById('setHeight').value;
-	canvas1.width = document.getElementById('setWidth').value;
+	canvas1.height = $("#setHeight").val();
+	canvas1.width = $("#setWidth").val();
 
-	canvas2.height = document.getElementById('setHeight').value;
-	canvas2.width = document.getElementById('setWidth').value;
+	canvas2.height = $("#setHeight").val();
+	canvas2.width = $("#setWidth").val();
 
-	canvas3.height = document.getElementById('setHeight').value;
-	canvas3.width = document.getElementById('setWidth').value;
-
-	$('#proba').html(`Width: ${canvas1.width}`);
-	$('#proba2').html(`Height: ${canvas1.height}`);
+	canvas3.height = $("#setHeight").val();
+	canvas3.width = $("#setWidth").val();
 
 	main();
 }
@@ -271,6 +269,5 @@ $(window).on("load", main);
 $("#pick-color").on("change", function(event) {
 	$('.currentColor').css('background-color', `${event.target.value}`);
 	paint.changeStyle(`${event.target.value}`);
-	
 	main();	
 })
